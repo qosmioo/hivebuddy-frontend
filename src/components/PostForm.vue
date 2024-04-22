@@ -23,11 +23,7 @@
 
 <script>
 
-import MyInput from "@/components/UI/MyInput.vue";
-import MyButton from "@/components/UI/MyButton.vue";
-
 export default {
-  components: {MyButton, MyInput},
   data() {
     return {
       post: {
@@ -39,7 +35,7 @@ export default {
   methods: {
     createPost() {
       this.post.id = Date.now()
-      this.$emit('createPost', this.post)
+      this.$emit('create', this.post)
       this.post = {
         title: '',
         body: ''
