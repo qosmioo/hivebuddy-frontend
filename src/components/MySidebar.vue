@@ -1,14 +1,14 @@
 <template>
   <div class="my-sidebar">
-    <div class="d-flex flex-sm-column align-items-center sticky-top">
-        <my-button href="#news">Лента</my-button>
-        <my-button href="#news">Чаты</my-button>
-        <my-button href="#news">Доска</my-button>
-        <my-button href="#news">Участники</my-button>
-        <my-button href="#news">Материалы</my-button>
-      
+    <div class="d-flex flex-sm-column align-items-end sticky-top">
+      <div class="sidebar__btn">Лента</div>
+      <div class="sidebar__btn">Чаты</div>
+      <div class="sidebar__btn">Доска</div>
+      <div class="sidebar__btn">Участники</div>
+      <div class="sidebar__btn">Материалы</div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -22,11 +22,21 @@ export default {
 </script>
 
 <style>
-/* The side navigation menu */
 .my-sidebar {
-  width: 150px;
-  height: 100%;
+  height: 90%;
   overflow: auto;
+  background-color: white;
+  margin-top: 30px;
+}
+
+.sidebar__btn {
+  margin-top: 5px;
+  width: 110px;
+  padding: 10px 15px;
+  background-color: #3b247b;
+  color: white;
+  border: none;
+  border-radius: 15px;
 }
 
 </style>
