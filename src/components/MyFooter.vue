@@ -1,10 +1,7 @@
 <template>
   <footer class="bg-body-tertiary text-center w-100 bottom-0">
-    <!-- Grid container -->
     <div class="container p-3">
-      <!--Grid row-->
       <div class="row">
-        <!--Grid column-->
         <div class="col-lg-6 col-md-6 mb-4 mb-md-0 text-start">
           <h5 class="text-uppercase mb-0">HIVEBUDDY</h5>
           <p class="fw-weight-bold">Контактная информация</p>
@@ -34,9 +31,7 @@
             </li>
           </ul>
         </div>
-        <!--Grid column-->
       </div>
-      <!--Grid row-->
     </div>
   </footer>
 </template>

@@ -1,8 +1,13 @@
 <template>
   <div class="my-navbar">
-    <div>HiveBuddy</div>
-    <my-button @click="$router.push('/posts')">Посты</my-button>
-    <my-button @click="$router.push('/about')">О сайте</my-button>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/teams">
+          <img src="./UI/logo.png" alt="" width="120" height="30">
+        </a>
+        <h5>Профиль</h5>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -16,14 +21,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.my-navbar {
-  background-color: #d5d1ff;
-  padding: 10px;
-  height: 60px;
-  //box-shadow: 2px 2px 4px gray;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.my-navbar .container-fluid{
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 </style>

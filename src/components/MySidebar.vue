@@ -1,7 +1,7 @@
 <template>
   <div class="my-sidebar">
     <div class="d-flex flex-sm-column align-items-end sticky-top">
-      <div class="sidebar__btn">Лента</div>
+      <a class="sidebar__btn" href="/posts">Лента</a>
       <div class="sidebar__btn">Чаты</div>
       <div class="sidebar__btn">Доска</div>
       <div class="sidebar__btn">Участники</div>
@@ -23,7 +23,7 @@ export default {
 
 <style>
 .my-sidebar {
-  height: 90%;
+  height: 80%;
   overflow: auto;
   background-color: white;
   margin-top: 30px;
@@ -33,8 +33,8 @@ export default {
   margin-top: 5px;
   width: 110px;
   padding: 10px 15px;
-  background-color: #3b247b;
-  color: white;
+  background-color: #d5d1ff;
+  color: #3b247b;
   border: none;
   border-radius: 15px;
 }

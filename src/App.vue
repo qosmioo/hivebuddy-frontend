@@ -33,4 +33,10 @@ export default {
 .app {
   padding: 20px;
 }
+
+.app__btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
 </style>

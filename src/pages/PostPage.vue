@@ -90,6 +90,13 @@ export default {
     showDialog() {
       this.dialogVisible = true
     },
+    async fetchComments(post_id) {
+      try {
+        const res = (await axios.get('https://jsonplaceholder.typicode.com/comments')).data.filter(comment => comment.postId === post_id)
+      } catch (e) {
+        alert('Ошибка')
+      }
+    },
     async fetchPosts() {
       try {
         this.isPostsLoading = true;
@@ -145,24 +152,4 @@ export default {
 
 <style>
 
-
-.app__btns {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-.page_wrapper {
-  display: flex;
-  margin-top: 15px;
-}
-
-.page {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.current-page {
-  border: 2px solid teal;
-}
 </style>
