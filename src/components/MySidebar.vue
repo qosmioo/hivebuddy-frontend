@@ -15,6 +15,12 @@
 import MyButton from "@/components/UI/MyButton.vue";
 
 export default {
+  // props: {
+  //   is_authenticated: {
+  //     type: Boolean,
+  //     default: false
+  //   }
+  // },
   components: {
     MyButton
   }

@@ -7,7 +7,7 @@
       Создать команду
     </my-button>
     <my-dialog v-model:show="dialogVisible">
-      <post-form
+      <team-form
           @create="createTeam"
       />
     </my-dialog>
@@ -21,9 +21,10 @@ import TeamList from "@/components/TeamList.vue";
 import MyButton from "@/components/UI/MyButton.vue";
 import PostForm from "@/components/PostForm.vue";
 import MyDialog from "@/components/UI/MyDialog.vue";
+import TeamForm from "@/components/TeamForm.vue";
 
 export default {
-  components: {MyDialog, PostForm, MyButton, TeamList},
+  components: {MyDialog, PostForm, MyButton, TeamList, TeamForm},
   data() {
     return {
       teams: [],
@@ -44,7 +45,7 @@ export default {
       }
     },
     createTeam(team) {
-      this.team.push(team)
+      this.teams.push(team)
       this.dialogVisible = false
     },
     showDialog() {

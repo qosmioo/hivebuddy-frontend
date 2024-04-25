@@ -36,4 +36,9 @@ export default {
 //  align-items: center;
 //  justify-content: space-between;
 //}
+
+.team {
+  // position: absolute;
+  z-index: -1;
+}
 </style>
