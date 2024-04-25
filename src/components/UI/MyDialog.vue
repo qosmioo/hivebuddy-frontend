@@ -29,7 +29,6 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
 }
@@ -40,5 +39,7 @@ export default {
   border-radius: 12px;
   min-height: 50px;
   min-width: 300px;
+  border: 2px solid black;
+
 }
 </style>
