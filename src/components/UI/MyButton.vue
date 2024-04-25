@@ -1,5 +1,5 @@
 <template>
-  <button class="btn">
+  <button class="button">
     <slot></slot>
   </button>
 </template>
@@ -11,11 +11,12 @@ export default {
 </script>
 
 <style>
-.btn {
-  align-self: flex-end;
+.button {
   padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 1px solid teal;
+  margin-top: 5px;
+  background-color: #3b247b;
+  color: white;
+  border: none;
+  border-radius: 15px;
 }
 </style>
