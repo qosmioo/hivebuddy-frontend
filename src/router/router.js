@@ -14,10 +14,6 @@ const routes = [
         component: PostPage
     },
     {
-        path: '/about',
-        component: About
-    },
-    {
         path: '/teams',
         component: TeamPage
     }

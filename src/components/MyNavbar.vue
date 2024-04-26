@@ -2,10 +2,10 @@
   <div class="my-navbar">
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/teams">
+        <divну class="navbar-brand" @click="leaveTeam">
           <img src="./UI/logo.png" alt="" width="120" height="30">
-        </a>
-        <h5>Профиль</h5>
+        </divну>
+        <a href="/" @click="$store.commit('login')">Выход</a>
       </div>
     </nav>
   </div>
@@ -15,7 +15,13 @@
 import MyButton from "@/components/UI/MyButton.vue";
 
 export default {
-  components: {MyButton}
+  components: {MyButton},
+  methods: {
+    leaveTeam() {
+      this.$store.commit('leaveTeam');
+      this.$router.push('/teams')
+    }
+  }
 
 }
 </script>
