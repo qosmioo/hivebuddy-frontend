@@ -1,7 +1,7 @@
 <template>
   <div class="team">
     <div class="card" style="width: 15rem;">
-      <img src="/img.jpg" class="card-img-top" alt="..." style="width: 15rem;">
+      <img :src="team.url" class="card-img-top" alt="..." style="width: 15rem;">
       <div class="card-body">
         <h5 class="card-title">{{ team.id }}</h5>
         <p class="card-text">{{team.title}}</p>

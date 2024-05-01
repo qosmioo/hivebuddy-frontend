@@ -13,7 +13,7 @@ export default {
 <style>
 .button {
   padding: 10px 15px;
-  margin-top: 5px;
+  margin: 5px;
   background-color: #3b247b;
   color: white;
   border: none;
