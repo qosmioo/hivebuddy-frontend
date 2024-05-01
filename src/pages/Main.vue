@@ -1,6 +1,7 @@
 <template>
   <div>
-    <my-button @click="login">Log in</my-button>
+    <my-button @click="login">В команду</my-button>
+    <my-button @click="$router.push('/login')">Войти</my-button>
   </div>
 </template>
 

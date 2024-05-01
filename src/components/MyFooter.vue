@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  // background-color: #d5d1ff;
-}
+//.container {
+//  background-color: #d5d1ff;
+//}
 </style>

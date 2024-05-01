@@ -3,6 +3,8 @@ import {createRouter, createWebHistory} from "vue-router";
 import PostPage from "@/pages/PostPage.vue";
 import About from "@/pages/About.vue";
 import TeamPage from "@/pages/TeamPage.vue";
+import LoginPage from "@/pages/Login.vue";
+import SignupPage from "@/pages/Signup.vue";
 
 const routes = [
     {
@@ -16,6 +18,14 @@ const routes = [
     {
         path: '/teams',
         component: TeamPage
+    },
+    {
+        path: '/login',
+        component: LoginPage
+    },
+    {
+        path: '/signup',
+        component: SignupPage
     }
 ]
 

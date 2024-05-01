@@ -2,14 +2,19 @@
   <my-navbar></my-navbar>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3 sticky-top">
+      <div v-if="$store.state.isAuth" class="col-sm-3 sticky-top d-flex justify-content-end">
         <my-sidebar></my-sidebar>
+        <div class="verticalLine"></div>
       </div>
-      <div class="col-sm-6 p-3 min-vh-100">
+      <div v-if="$store.state.isAuth" class="col-sm-6 p-3 min-vh-100">
         <div class="app">
           <router-view></router-view>
         </div>
       </div>
+      <div v-else>
+        <div class="app">
+        <router-view></router-view>
+      </div></div>
     </div>
     <my-footer></my-footer>
   </div>
@@ -33,5 +38,9 @@ export default {
 .app {
   padding: 20px;
 }
-
+.verticalLine {
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.11);
+  height: 100%;  /* Ограничивается только размером родительского элемента */
+}
 </style>

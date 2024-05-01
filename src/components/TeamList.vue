@@ -11,7 +11,6 @@
     </div>
   </div>
   <h2 v-else style="color:red" class="team-list">
-    Список постов пуст
   </h2>
 </template>
 
