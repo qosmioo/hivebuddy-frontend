@@ -16,7 +16,7 @@
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
         <p>Войти с помощью Яндекс ID</p>
-        <img src="/public/yandexID.png" alt="" width="30" height="30">
+        <img src="/yandexID.png" alt="" width="30" height="30">
       </div>
     </div>
   </div>
@@ -34,8 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  margin-left: 660px;
-  margin-top: 40px;
+  margin: auto;
   width: 23%;
   display: flex;
   flex-direction: column;
@@ -70,7 +69,7 @@ p {
 }
 
 .signup {
-  background-image: url("/public/background.png");
+  background-image: url("/background.png");
   background-size: cover;
   height: 740px;
 }
