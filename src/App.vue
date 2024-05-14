@@ -1,6 +1,6 @@
 <template>
   <my-navbar></my-navbar>
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <div class="row">
       <div v-if="$store.state.isAuth" class="col-sm-3 sticky-top d-flex justify-content-end">
         <my-sidebar></my-sidebar>
@@ -35,9 +35,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.app {
-  padding: 20px;
-}
+
 .verticalLine {
   width: 1px;
   background-color: rgba(0, 0, 0, 0.11);

@@ -1,33 +1,22 @@
 <template>
-  <div>
-    <h1>Страница с постами</h1>
-    <my-input
-        v-model="searchQuery"
-        placeholder="Поиск..."
-    />
-    <div class="app__btns">
-      <my-button
-          @click="showDialog"
-      >
-        Создать пост
-      </my-button>
-      <my-select
-          v-model="selectedSort"
-          :options="sortOptions"
-      />
+  <div class="posts">
+    <h4>Командный проект 5</h4>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <my-input v-model="searchQuery" placeholder="Поиск..."/>
+      <my-button @click="showDialog">Создать пост</my-button>
+      <my-dialog v-model:show="dialogVisible">
+        <post-form @create="createPost"/>
+      </my-dialog>
     </div>
-    <my-dialog v-model:show="dialogVisible">
-      <post-form
-          @create="createPost"
-      />
-    </my-dialog>
+
+
     <post-list
         :posts="sortedAndSearchedPosts"
         @remove="removePost"
         v-if="!isPostsLoading"
     />
     <div v-else>Идет загрузка...</div>
-    <div v-intersection="loadMorePosts" class="observer"></div>
+<!--    <div v-intersection="loadMorePosts" class="observer"></div>-->
 
     <!--    <div class="page_wrapper">-->
     <!--      <div-->
@@ -53,6 +42,7 @@ import axios from 'axios';
 import MyButton from "@/components/UI/MyButton.vue";
 import MySelect from "@/components/UI/MySelect.vue";
 import MyInput from "@/components/UI/MyInput.vue";
+import {getPosts} from "@/api/api.js";
 
 export default {
   components: {
@@ -100,16 +90,18 @@ export default {
     async fetchPosts() {
       try {
         this.isPostsLoading = true;
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-          params: {
-            _page: this.page,
-            _limit: this.limit
-          }
-        });
-        this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-        this.posts = response.data;
+        // const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+        //   params: {
+        //     _page: this.page,
+        //     _limit: this.limit
+        //   }
+        // });
+        const response = await getPosts();
+        this.totalPages = Math.ceil(response.length / this.limit)
+        this.posts = response;
       } catch (e) {
         alert('Ошибка')
+        console.log(e)
       } finally {
         this.isPostsLoading = false;
       }
@@ -139,7 +131,7 @@ export default {
           post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
     },
     sortedAndSearchedPosts() {
-      return this.sortedPosts.filter(post => post.title.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase()))
+      return this.sortedPosts.filter(post => post.text.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase()))
     }
   },
   watch: {
@@ -151,9 +143,10 @@ export default {
 </script>
 
 <style>
-.app__btns {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+
+.posts {
+  background-image: url("/src/images/background.png");
+  background-size: cover;
 }
+
 </style>

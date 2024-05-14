@@ -1,10 +1,10 @@
 <template>
-  <footer class="bg-body-tertiary text-center w-100 bottom-0">
+  <footer class=" text-center w-100 bottom-0">
     <div class="container p-3">
       <div class="row">
         <div class="col-lg-6 col-md-6 mb-4 mb-md-0 text-start">
-          <h5 class="text-uppercase mb-0">HIVEBUDDY</h5>
-          <p class="fw-weight-bold">Контактная информация</p>
+          <h5 class="text-uppercase mb-1 fw-bold">hivebuddy</h5>
+          <p class="fw-bold mb-2">Контактная информация</p>
           <ul>
             <li>
               <a class="text-body">+7(499) 234-42-66</a>
@@ -17,8 +17,8 @@
             </li>
           </ul>
         </div>
-        <div class="col-lg-6 col-md-6 mb-mt-4 mb-md-0 text-start">
-          <p class="fw-weight-bold">Команда разработки</p>
+        <div class="col-lg-6 col-md-6 mb-mt-4 mb-md-0 mt-4 text-start">
+          <p class="fw-bold mb-2">Команда разработки</p>
           <ul>
             <li>
               <a href="#!" class="text-body">Backend - Герман Базиев</a>
@@ -43,7 +43,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//.container {
-//  background-color: #d5d1ff;
-//}
+footer {
+  background-color: #dfdefd;
+}
+
+.text-uppercase {
+  color: #3b247b;
+}
 </style>

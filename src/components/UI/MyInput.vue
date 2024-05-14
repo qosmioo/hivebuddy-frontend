@@ -19,9 +19,11 @@ export default {
 
 <style scoped>
 .input {
-  width: 100%;
-  border: 1px solid teal;
+  width: 70%;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 15px;
   padding: 10px 15px;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 </style>

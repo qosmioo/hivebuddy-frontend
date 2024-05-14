@@ -3,15 +3,15 @@
     <h4>Создание поста</h4>
     <my-input
       v-focus
-      v-model="post.title"
+      v-model="post.text"
       type="text"
       placeholder="Название"
     />
-    <my-input
-      v-model="post.body"
-      type="text"
-      placeholder="Описание"
-    />
+<!--    <my-input-->
+<!--      v-model="post.body"-->
+<!--      type="text"-->
+<!--      placeholder="Описание"-->
+<!--    />-->
     <my-button
       class="btn"
       style="align-self: flex-end; margin-top: 15px"
@@ -28,8 +28,8 @@ export default {
   data() {
     return {
       post: {
-        title: '',
-        body: ''
+        // title: '',
+        text: ''
       }
   }
 },

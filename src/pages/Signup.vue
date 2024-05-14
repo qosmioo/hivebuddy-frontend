@@ -1,7 +1,7 @@
 <template>
   <div class="signup">
     <div class="form">
-      <img src="/public/logo.png" alt="" width="120" height="30" style="margin:15px;">
+      <img src="/src/images/logo.png" alt="" width="120" height="30" style="margin:15px;">
       <div class="input-group flex-nowrap m-2">
         <input type="text" class="form-control" placeholder="Имя пользователя" aria-label="Username" aria-describedby="addon-wrapping">
       </div>
@@ -16,7 +16,7 @@
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
         <p>Войти с помощью Яндекс ID</p>
-        <img src="/yandexID.png" alt="" width="30" height="30">
+        <img src="/src/images/yandexID.png" alt="" width="30" height="30">
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  margin: auto;
+  margin: 80px auto auto;
   width: 23%;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@ p {
 }
 
 .signup {
-  background-image: url("/background.png");
+  background-image: url("/src/images/background.png");
   background-size: cover;
   height: 740px;
 }

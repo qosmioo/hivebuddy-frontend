@@ -1,5 +1,5 @@
 <template>
-  <div v-if="teams.length > 0" class="team-list">
+  <div class="team-list">
     <div class="wrapper">
       <div class="block">
         <team-item
@@ -10,8 +10,6 @@
       </div>
     </div>
   </div>
-  <h2 v-else style="color:red" class="team-list">
-  </h2>
 </template>
 
 <script>

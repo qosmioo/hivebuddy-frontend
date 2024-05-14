@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="form">
-      <img src="/public/logo.png" alt="" width="120" height="30" style="margin:15px;">
+      <img src="/src/images/logo.png" alt="" width="120" height="30" style="margin:15px;">
       <div class="input-group flex-nowrap m-2">
         <input type="email" class="form-control" placeholder="Электронная почта" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.login">
       </div>
@@ -9,12 +9,11 @@
         <input type="password" class="form-control" placeholder="Пароль" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.password">
       </div>
       <my-button @click="login">Войти</my-button>
-      <my-button @click="test">ТЕст</my-button>
       <p @click="$router.push('/signup')">У меня нет аккаунта</p>
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
         <p>Войти с помощью Яндекс ID</p>
-        <img src="/yandexID.png" alt="" width="30" height="30">
+        <img src="/src/images/yandexID.png" alt="" width="30" height="30">
       </div>
     </div>
   </div>
@@ -23,7 +22,7 @@
 
 <script>
 import MyButton from "@/components/UI/MyButton.vue";
-import {sendChatRequest, sendLoginRequest} from "@/api/api.js";
+import {sendLoginRequest} from "@/api/api.js";
 
 export default {
   components: {MyButton},
@@ -49,17 +48,13 @@ export default {
         this.authData.password = "";
       }
     },
-    async test() {
-      const test = await sendChatRequest();
-      console.log(test);
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .form {
-  margin: auto;
+  margin: 80px auto auto;
   width: 23%;
   display: flex;
   flex-direction: column;
@@ -94,7 +89,7 @@ p {
 }
 
 .login {
-  background-image: url("/background.png");
+  background-image: url("/src/images/background.png");
   background-size: cover;
   height: 740px;
 }

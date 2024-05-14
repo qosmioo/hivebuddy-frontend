@@ -1,15 +1,29 @@
-const URL = "127.0.0.1:5062/swagger";
-export const sendChatRequest = async () => {
-    const response = await sendApiRequest("/api/chat", 'GET');
-
-    return await response.json();
-}
-
+const URL = "http://localhost:5062";
 
 export const sendLoginRequest = async (login, password) => {
     const response = await sendApiRequest("/api/auth/login" + "?email=" + login + "&password=" + password,
         'POST');
 
+    return await response.json();
+}
+
+export const getTeams = async () => {
+    const response = await sendApiRequest("/api/group");
+    return await response.json();
+}
+
+export const getPosts = async () => {
+    const response = await sendApiRequest("/api/post");
+    return await response.json();
+}
+
+export const getPostById = async (id) => {
+    const response = await sendApiRequest("/api/post/" + id);
+    return await response.json();
+}
+
+export const getCommentsByPostId = async (postId) => {
+    const response = await sendApiRequest("/api/feedback/" + postId);
     return await response.json();
 }
 

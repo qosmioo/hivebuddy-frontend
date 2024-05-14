@@ -2,15 +2,48 @@
   <div v-if="$store.state.isAuth">
     <div class="my-sidebar">
       <div v-if="$store.state.joinedTeam" class="d-flex flex-sm-column align-items-end sticky-top">
-        <div class="sidebar__btn" @click="$router.push('/posts')">Лента</div>
-        <div class="sidebar__btn">Чаты</div>
-        <div class="sidebar__btn">Доска</div>
-        <div class="sidebar__btn">Участники</div>
-        <div class="sidebar__btn">Материалы</div>
+        <div class="sidebar__btn" @click="leaveTeam">
+          <img src="/src/images/home.png" alt="..." style="width: 22px">
+          <div class="btn-text">На главную</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/posts')">
+          <img src="/src/images/feed.png" alt="..." style="width: 22px">
+          <div class="btn-text">Лента</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/posts')">
+          <img src="/src/images/chats.png" alt="..." style="width: 22px">
+          <div class="btn-text">Чаты</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/posts')">
+          <img src="/src/images/task_2.png" alt="..." style="width: 22px">
+          <div class="btn-text">Доска</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/posts')">
+          <img src="/src/images/people_2.png" alt="..." style="width: 22px">
+          <div class="btn-text">Участники</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/posts')">
+          <img src="/src/images/materials.png" alt="..." style="width: 22px">
+          <div class="btn-text">Материалы</div>
+        </div>
       </div>
       <div v-else class="d-flex flex-sm-column align-items-end sticky-top">
-        <div class="sidebar__btn" @click="joinTeam">В команду</div>
-        <div class="sidebar__btn">Настройки</div>
+        <div class="sidebar__btn" @click="joinTeam">
+          <img src="/src/images/people_2.png" alt="..." style="width: 24px">
+          <div class="btn-text">В команду</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/teams')">
+          <img src="/src/images/task.png" alt="..." style="width: 24px">
+          <div class="btn-text">Задачи</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/teams')">
+          <img src="/src/images/teams_archive.png" alt="..." style="width: 24px">
+          <div class="btn-text">Архив</div>
+        </div>
+        <div class="sidebar__btn" @click="$router.push('/teams')">
+          <img src="/src/images/settings.png" alt="..." style="width: 24px">
+          <div class="btn-text">Настройки</div>
+        </div>
       </div>
 <!--      <div class="verticalLine"></div>-->
     </div>
@@ -28,6 +61,10 @@ export default {
     joinTeam() {
       this.$store.commit('joinTeam')
       this.$router.push('/posts')
+    },
+    leaveTeam() {
+      this.$store.commit('leaveTeam')
+      this.$router.push('/teams')
     }
   }
 }
@@ -42,14 +79,24 @@ export default {
 }
 
 .sidebar__btn {
-  margin-top: 5px;
+  margin-top: 8px;
   margin-right: 15px;
-  width: 110px;
+  width: 170px;
+  height: 43px;
   padding: 10px 15px;
-  background-color: #d5d1ff;
-  color: #3b247b;
+  background-color: #dfddfb;
+  color: #515050;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-text {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .verticalLine {

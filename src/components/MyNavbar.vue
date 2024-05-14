@@ -3,9 +3,13 @@
     <nav class="navbar navbar-light" style="height: 60px">
       <div class="container-fluid">
         <div class="navbar-brand" @click="leaveTeam">
-          <img src="../../public/logo.png" alt="" width="120" height="30">
+          <img src="/src/images/logo.png" alt="" width="120" height="30">
         </div>
-        <a href="/" @click="$store.commit('login')">Выход</a>
+        <div class="d-flex align-items-center gap-2">
+          <a class="link-opacity-100" href="/" @click="$store.commit('logout')">Выход</a>
+          <a class="link-opacity-100" @click="$router.push('/login')">Вход</a>
+        </div>
+
       </div>
     </nav>
     <div class="horizontalLine"></div>
@@ -20,6 +24,7 @@ export default {
   methods: {
     leaveTeam() {
       this.$store.commit('leaveTeam');
+      this.$store.commit('login');
       this.$router.push('/teams')
     }
   }
