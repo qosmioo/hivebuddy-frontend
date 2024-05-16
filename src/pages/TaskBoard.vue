@@ -1,15 +1,56 @@
 <template>
   <div>
-    <h1>Доска</h1>
+    <h4>Командный проект {{ $store.state.teamName }}</h4>
+    <div class="container taskboard">
+      <div class="row">
+        <div class="col-sm p-0">
+          <h5 class="m-2 ms-4">Новые</h5>
+          <hr>
+          <task-list :tasks="tasks.filter(t => t.status === 'new')"></task-list>
+          <my-button @click="$router.push('/task-create')">Создать новую задачу</my-button>
+        </div>
+        <div class="col-sm p-0">
+          <h5 class="m-2 ms-4">Выполняются</h5>
+          <hr>
+          <task-list :tasks="tasks.filter(t => t.status === 'in progress')"></task-list>
+        </div>
+        <div class="col-sm p-0">
+          <h5 class="m-2 ms-4">Выполненные</h5>
+          <hr>
+          <task-list :tasks="tasks.filter(t => t.status === 'done')"></task-list>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import TaskList from "@/components/TaskList.vue";
+import MyButton from "@/components/UI/MyButton.vue";
 
+export default {
+  components: {MyButton, TaskList, },
+  data() {
+    return {
+      tasks: []
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.taskboard {
+  margin: 30px 20px;
+  border: 1px rgba(0, 0, 0, 0.14) solid;
+  border-radius: 15px;
+}
+.verticalLine {
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.14);
+  height: 100%;  /* Ограничивается только размером родительского элемента */
+}
+.button {
+  background-color: #f6b528;
+  margin: 20px;
+}
 </style>

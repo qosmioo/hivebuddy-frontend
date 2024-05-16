@@ -65,6 +65,7 @@ export default {
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
   z-index: 0;
+  background-color: white;
 }
 
 input {

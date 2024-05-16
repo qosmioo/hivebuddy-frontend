@@ -1,15 +1,15 @@
 <template>
   <div class="teamPage">
     <my-button
-        @click="showDialog"
+        @click="$router.push('/team-create')"
     >
       Создать новую команду
     </my-button>
-    <my-dialog v-model:show="dialogVisible">
-      <team-form
-          @create="createTeam"
-      />
-    </my-dialog>
+<!--    <my-dialog v-model:show="dialogVisible">-->
+<!--      <team-form-->
+<!--          @create="createTeam"-->
+<!--      />-->
+<!--    </my-dialog>-->
     <team-list :teams="teams"></team-list>
   </div>
 </template>
@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     async fetchTeams() {
-      console.log(this.$store.state.joinedTeam)
       const new_response = await getTeamsByUserId(this.$store.state.userId);
 
       this.teams = [...new_response]

@@ -24,9 +24,10 @@ export const store= createStore({
             state.joinedTeam = false;
             state.teamId = ""
         },
-        joinTeam(state, teamId) {
+        setTeam(state, team) {
             state.joinedTeam = true;
-            state.teamId = teamId;
+            state.teamId = team.id;
+            state.teamName = team.name;
         },
         login(state, authData) {
             state.isAuth = true;

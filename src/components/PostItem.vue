@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <div class="card mb-3">
+    <div class="card mb-3" style=" border-radius: 15px;">
       <div class="card-header bg-transparent">
         <img src="/src/images/img.jpg" alt="" style="width: 40px; border-radius: 20px">
         <p class="card-text ms-2">{{ post.text }}</p>
@@ -39,7 +39,6 @@ export default {
 
 <style>
 .post {
-  margin-left: 80px;
   width: 600px;
 }
 

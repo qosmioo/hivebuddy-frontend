@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <h4>Командный проект 5</h4>
+    <h4>Командный проект {{ $store.state.teamName }}</h4>
     <div class="d-flex flex-row align-items-center mb-4">
       <my-input v-model="searchQuery" placeholder="Поиск..."/>
       <my-button @click="showDialog">Создать пост</my-button>
@@ -104,7 +104,6 @@ export default {
       // } finally {
       //   this.isPostsLoading = false;
       // }
-        console.log(this.$store.state.teamId)
         const response = await getPostsByGroupId(this.$store.state.teamId);
         this.totalPages = Math.ceil(response.length / this.limit)
         this.posts = response;

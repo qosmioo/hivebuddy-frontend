@@ -7,8 +7,8 @@
       @remove="$emit('remove', post)"
     />
   </div>
-  <h2 v-else style="color:red" class="post-list">
-    Список постов пуст
+  <h2 v-else style="color:green" class="post-list">
+    Постов пока нет, будьте первым!
   </h2>
 </template>
 

@@ -10,11 +10,11 @@
           <img src="/src/images/chats.png" alt="..." style="width: 22px">
           <div class="btn-text">Чаты</div>
         </div>
-        <div class="sidebar__btn" @click="$router.push('/posts')">
+        <div class="sidebar__btn" @click="$router.push('/taskboard')">
           <img src="/src/images/task_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Доска</div>
         </div>
-        <div class="sidebar__btn" @click="$router.push('/posts')">
+        <div class="sidebar__btn" @click="$router.push('/participants')">
           <img src="/src/images/people_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Участники</div>
         </div>
@@ -22,7 +22,7 @@
           <img src="/src/images/materials.png" alt="..." style="width: 22px">
           <div class="btn-text">Материалы</div>
         </div>
-        <div class="sidebar__btn" @click="$router.push('/team-settings')">
+        <div class="sidebar__btn" @click="$router.push('/team-settings/' + $store.state.teamId)">
           <img src="/src/images/settings.png" alt="..." style="width: 22px">
           <div class="btn-text">Настройки</div>
         </div>
@@ -84,9 +84,7 @@ export default {
   width: 170px;
   height: 43px;
   padding: 10px 15px;
-  background-color: #dfddfb;
-  color: #515050;
-  border: none;
+  background-color: white;
   border-radius: 20px;
   display: flex;
   align-items: center;

@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     openTeam() {
-      this.$store.commit('joinTeam', this.team.id);
+      this.$store.commit('setTeam', this.team);
       this.$router.push('/feed');
     }
   }

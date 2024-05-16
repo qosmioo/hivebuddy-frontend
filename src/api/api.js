@@ -12,6 +12,11 @@ export const getTeamsByUserId = async (userId) => {
     return await response.json();
 }
 
+export const postPost = async (post) => {
+    const response = await sendApiRequest("/api/post", "POST", post);
+    return await response.json();
+
+}
 export const getPostsByGroupId = async (groupId) => {
     const response = await sendApiRequest("/api/posts/" + groupId);
     return await response.json();
@@ -24,6 +29,31 @@ export const getPostById = async (id) => {
 
 export const getCommentsByPostId = async (postId) => {
     const response = await sendApiRequest("/api/feedback/" + postId);
+    return await response.json();
+}
+
+export const PostTeam = async (group) => {
+    const response = await sendApiRequest("/api/group", "POST", group);
+    return await response.json();
+}
+
+export const PutTeam = async (group) => {
+    const response = await sendApiRequest("/api/group/" + group.id, "PUT", group);
+    return await response.json();
+}
+
+export const DeleteTeam = async (groupId) => {
+    const response = await sendApiRequest("/api/group/" + groupId, "DELETE");
+    return await response.json();
+}
+
+export const postTask = async (task) => {
+    const response = await sendApiRequest("/api/task", "POST", task);
+    return await response.json();
+}
+
+export const getUsersByGroupId = async (groupId) => {
+    const response = await sendApiRequest("/api/group/" + groupId + '/users');
     return await response.json();
 }
 
