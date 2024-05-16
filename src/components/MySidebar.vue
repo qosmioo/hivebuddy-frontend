@@ -2,11 +2,7 @@
   <div v-if="$store.state.isAuth">
     <div class="my-sidebar">
       <div v-if="$store.state.joinedTeam" class="d-flex flex-sm-column align-items-end sticky-top">
-        <div class="sidebar__btn" @click="leaveTeam">
-          <img src="/src/images/home.png" alt="..." style="width: 22px">
-          <div class="btn-text">На главную</div>
-        </div>
-        <div class="sidebar__btn" @click="$router.push('/posts')">
+        <div class="sidebar__btn" @click="$router.push('/feed')">
           <img src="/src/images/feed.png" alt="..." style="width: 22px">
           <div class="btn-text">Лента</div>
         </div>
@@ -26,11 +22,15 @@
           <img src="/src/images/materials.png" alt="..." style="width: 22px">
           <div class="btn-text">Материалы</div>
         </div>
+        <div class="sidebar__btn" @click="$router.push('/team-settings')">
+          <img src="/src/images/settings.png" alt="..." style="width: 22px">
+          <div class="btn-text">Настройки</div>
+        </div>
       </div>
       <div v-else class="d-flex flex-sm-column align-items-end sticky-top">
-        <div class="sidebar__btn" @click="joinTeam">
+        <div class="sidebar__btn" @click="$router.push('/teams')">
           <img src="/src/images/people_2.png" alt="..." style="width: 24px">
-          <div class="btn-text">В команду</div>
+          <div class="btn-text">Команды</div>
         </div>
         <div class="sidebar__btn" @click="$router.push('/teams')">
           <img src="/src/images/task.png" alt="..." style="width: 24px">
@@ -40,7 +40,7 @@
           <img src="/src/images/teams_archive.png" alt="..." style="width: 24px">
           <div class="btn-text">Архив</div>
         </div>
-        <div class="sidebar__btn" @click="$router.push('/teams')">
+        <div class="sidebar__btn" @click="$router.push('/profile')">
           <img src="/src/images/settings.png" alt="..." style="width: 24px">
           <div class="btn-text">Настройки</div>
         </div>
@@ -91,12 +91,13 @@ export default {
   display: flex;
   align-items: center;
   gap: 15px;
+  cursor: pointer
 }
 
 .btn-text {
   margin-left: 5px;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .verticalLine {

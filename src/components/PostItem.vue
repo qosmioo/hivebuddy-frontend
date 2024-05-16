@@ -9,9 +9,8 @@
         <h5 class="card-title">Success card title</h5>
         <p class="card-text">{{ post.text }}</p>
       </div>
-<!--      <router-link :to="{ name: 'posts/:id', params: { post } }">home</router-link>-->
       <div class="card-footer bg-transparent">
-        <p class="link-primary" @click="openPost">Развернуть комментарии</p>
+        <p class="link-primary" @click="openPost" style="cursor: pointer">Развернуть комментарии</p>
         <div class="input-group mb-3 mt-3">
           <input type="text" class="form-control" placeholder="Оставить комментарий" aria-label="Recipient's username" aria-describedby="button-addon2">
           <button class="btn btn-success" type="button" id="button-addon2">Отправить</button>

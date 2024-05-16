@@ -7,6 +7,9 @@ import LoginPage from "@/pages/Login.vue";
 import SignupPage from "@/pages/Signup.vue";
 import PostIdPage from "@/pages/PostIdPage.vue";
 import postItem from "@/components/PostItem.vue";
+import TaskBoard from "@/pages/TaskBoard.vue";
+import ProfileSettings from "@/pages/ProfileSettings.vue";
+import TeamSettings from "@/pages/TeamSettings.vue";
 
 const routes = [
     {
@@ -14,8 +17,8 @@ const routes = [
         component: Main
     },
     {
-        path: '/posts',
-        component: PostPage
+        path: '/feed',
+        component: PostPage,
     },
     {
         path: '/teams',
@@ -34,6 +37,18 @@ const routes = [
         component: PostIdPage,
         name: 'postId',
     },
+    {
+        path: '/taskboard',
+        component: TaskBoard,
+    },
+    {
+        path: '/profile',
+        component: ProfileSettings
+    },
+    {
+        path: '/team-settings',
+        component: TeamSettings
+    }
 ]
 
 const router = createRouter({

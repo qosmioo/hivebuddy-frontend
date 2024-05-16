@@ -8,8 +8,8 @@
       <div class="input-group flex-nowrap m-2">
         <input type="password" class="form-control" placeholder="Пароль" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.password">
       </div>
-      <my-button @click="login">Войти</my-button>
-      <p @click="$router.push('/signup')">У меня нет аккаунта</p>
+      <my-button @click="mockAuthentication">Войти</my-button>
+      <p @click="$router.push('/signup')" style="cursor: pointer">У меня нет аккаунта</p>
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
         <p>Войти с помощью Яндекс ID</p>
@@ -24,37 +24,47 @@
 import MyButton from "@/components/UI/MyButton.vue";
 import {sendLoginRequest} from "@/api/api.js";
 
+
 export default {
   components: {MyButton},
   data() {
     return {
       authData: {
-        login: "",
-        password: ""
+        email: "sanin",
+        password: "111",
+        username: "Фёдор Санин",
+        userId: "9cdb4bb2-d736-4b58-be83-2e4845ec50b7",
       }
     }
   },
   methods: {
-    async login() {
-      const authData = await sendLoginRequest(this.authData.login, this.authData.password);
-      console.log(authData);
-      if (!(authData.status === 404) && this.authData.login !== "" && this.authData.password !== "") {
-        localStorage.setItem('authData', JSON.stringify(authData));
-        console.log(authData);
-        this.$router.push('/teams');
-      } else {
-        console.log(authData);
-        this.authData.login = "";
-        this.authData.password = "";
-      }
-    },
+    // async signIn() {
+    //   const authData = await sendLoginRequest(this.authData.login, this.authData.password);
+    //   console.log(authData);
+    //   if (!(authData.status === 404) && this.authData.login !== "" && this.authData.password !== "") {
+    //     // localStorage.setItem('authData', JSON.stringify(authData));
+    //     console.log(authData);
+    //     this.$router.push('/teams');
+    //   } else {
+    //     console.log(authData);
+    //     this.authData.login = "";
+    //     this.authData.password = "";
+    //   }
+    // },
+    mockAuthentication() {
+      this.$store.commit("login", this.authData);
+      console.log(this.$store.state.joinedTeam)
+
+      // console.log(this.$store.state, this.$store.state.userId);
+      this.$router.push('/teams');
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .form {
-  margin: 80px auto auto;
+  margin: 129px auto auto;
   width: 23%;
   display: flex;
   flex-direction: column;

@@ -5,7 +5,7 @@ import router from "@/router/router.js";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import directives from "@/directives/index.js";
-import store from "@/store/index.js";
+import {store} from "@/store/index.js";
 
 const app = createApp(App)
 

@@ -20,7 +20,7 @@ import MyButton from "@/components/UI/MyButton.vue";
 import PostForm from "@/components/PostForm.vue";
 import MyDialog from "@/components/UI/MyDialog.vue";
 import TeamForm from "@/components/TeamForm.vue";
-import {getTeams} from "@/api/api.js";
+import {getTeamsByUserId} from "@/api/api.js";
 
 export default {
   components: {MyDialog, PostForm, MyButton, TeamList, TeamForm},
@@ -32,13 +32,8 @@ export default {
   },
   methods: {
     async fetchTeams() {
-      // try {
-      //   const response = await axios.get('https://localhost:5062/api/group');
-      //   this.teams = response.data;
-      // } catch (e) {
-      //   alert('Ошибка')
-      // }
-      const new_response = await getTeams()
+      console.log(this.$store.state.joinedTeam)
+      const new_response = await getTeamsByUserId(this.$store.state.userId);
 
       this.teams = [...new_response]
     },

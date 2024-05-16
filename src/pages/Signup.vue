@@ -12,7 +12,7 @@
         <input type="password" class="form-control" placeholder="Пароль" aria-label="Username" aria-describedby="addon-wrapping">
       </div>
       <my-button>Зарегистрироваться</my-button>
-      <p @click="$router.push('/login')">У меня уже есть аккаунт</p>
+      <p @click="$router.push('/login')" style="cursor: pointer">У меня уже есть аккаунт</p>
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
         <p>Войти с помощью Яндекс ID</p>
@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  margin: 80px auto auto;
+  margin: 129px auto auto;
   width: 23%;
   display: flex;
   flex-direction: column;

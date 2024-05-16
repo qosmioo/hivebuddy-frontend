@@ -46,6 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .main {
+  margin-top: 77px;
   background-image: url("/src/images/background.png");
   background-size: cover;
   height: 792px;

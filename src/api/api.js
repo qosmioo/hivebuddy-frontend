@@ -7,13 +7,13 @@ export const sendLoginRequest = async (login, password) => {
     return await response.json();
 }
 
-export const getTeams = async () => {
-    const response = await sendApiRequest("/api/group");
+export const getTeamsByUserId = async (userId) => {
+    const response = await sendApiRequest("/api/groups/" + userId);
     return await response.json();
 }
 
-export const getPosts = async () => {
-    const response = await sendApiRequest("/api/post");
+export const getPostsByGroupId = async (groupId) => {
+    const response = await sendApiRequest("/api/posts/" + groupId);
     return await response.json();
 }
 

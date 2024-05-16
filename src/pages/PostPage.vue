@@ -8,8 +8,6 @@
         <post-form @create="createPost"/>
       </my-dialog>
     </div>
-
-
     <post-list
         :posts="sortedAndSearchedPosts"
         @remove="removePost"
@@ -42,7 +40,7 @@ import axios from 'axios';
 import MyButton from "@/components/UI/MyButton.vue";
 import MySelect from "@/components/UI/MySelect.vue";
 import MyInput from "@/components/UI/MyInput.vue";
-import {getPosts} from "@/api/api.js";
+import {getPostsByGroupId} from "@/api/api.js";
 
 export default {
   components: {
@@ -88,23 +86,28 @@ export default {
       }
     },
     async fetchPosts() {
-      try {
-        this.isPostsLoading = true;
-        // const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-        //   params: {
-        //     _page: this.page,
-        //     _limit: this.limit
-        //   }
-        // });
-        const response = await getPosts();
+      // try {
+      //   this.isPostsLoading = true;
+      //   // const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+      //   //   params: {
+      //   //     _page: this.page,
+      //   //     _limit: this.limit
+      //   //   }
+      //   // });
+      //   console.log(this.$store.state.groupId)
+      //   const response = await getPostsByGroupId(this.$store.state.groupId);
+      //   this.totalPages = Math.ceil(response.length / this.limit)
+      //   this.posts = response;
+      // } catch (e) {
+      //   alert('Ошибка')
+      //   console.log(e)
+      // } finally {
+      //   this.isPostsLoading = false;
+      // }
+        console.log(this.$store.state.teamId)
+        const response = await getPostsByGroupId(this.$store.state.teamId);
         this.totalPages = Math.ceil(response.length / this.limit)
         this.posts = response;
-      } catch (e) {
-        alert('Ошибка')
-        console.log(e)
-      } finally {
-        this.isPostsLoading = false;
-      }
     },
     async loadMorePosts() {
       try {
