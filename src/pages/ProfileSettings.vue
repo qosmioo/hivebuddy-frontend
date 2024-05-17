@@ -28,10 +28,10 @@
       <my-horizontal-line></my-horizontal-line>
       <div style="padding: 20px">
         <label for="name-input" class="form-label mb-3 fs-5">Пароль</label>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" style="width: 100%">
           <input type="password" class="form-control" id="old-password-input" placeholder="Введите старый пароль">
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" style="width: 100%">
           <input type="password" class="form-control" id="new-password-input" placeholder="Введите новый пароль">
         </div>
         <my-button>Изменить</my-button>
@@ -61,7 +61,7 @@ export default {
 <style lang="scss" scoped>
 .form {
   margin: 30px 40px;
-  width: 70%;
+  width: 100%;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
   z-index: 0;
@@ -84,6 +84,5 @@ input {
 .profile-settings {
   background-image: url("/src/images/background.png");
   background-size: cover;
-  height: 740px;
 }
 </style>

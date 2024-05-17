@@ -65,9 +65,9 @@ export default {
     async createTeam() {
       this.team.id = this.generateUUID()
       this.team.userId = this.$store.state.userId
-      const res = await PostTeam(this.team)
       this.$store.commit('setTeam', this.team)
       this.$router.push('/feed')
+      const res = await PostTeam(this.team)
     }
   }
 }
@@ -76,9 +76,10 @@ export default {
 <style lang="scss" scoped>
 .form {
   margin: 30px 40px;
-  width: 70%;
+  width: 100%;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
+  background-color: white;
   z-index: 0;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <p class="title text-center mt-3 fs-1 fw-bold">BEE PRODUCTIVE</p>
+    <p class="title text-center fs-1 fw-bold">BEE PRODUCTIVE</p>
     <p class="title2 text-center mt-3 fs-3 fw-semibold">Пчёлы знают толк в сотрудничестве - давайте следовать их примеру!</p>
     <div class="cards">
       <div class="card p-4" style="width: 16rem; height: 22rem;">
@@ -62,8 +62,8 @@ export default {
 }
 
 .cards {
-  margin-top: 70px;
-  margin-left: 430px;
+  margin: 70px auto auto;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -77,6 +77,6 @@ button {
   border-radius: 15px;
   height: 80px;
   width: 300px;
-  margin: 70px 815px;
+  margin: 70px 300px;
 }
 </style>

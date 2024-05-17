@@ -55,9 +55,9 @@ export default {
       this.team.description = ""
     },
     async deleteTeam() {
-      const res = await DeleteTeam(this.team.id)
       this.$store.commit('leaveTeam')
       this.$router.push('/teams')
+      const res = await DeleteTeam(this.team.id)
     }
   }
 }
@@ -66,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 .form {
   margin: 30px 40px;
-  width: 70%;
+  width: 100%;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
   z-index: 0;
@@ -89,6 +89,5 @@ input {
 .profile-settings {
   background-image: url("/src/images/background.png");
   background-size: cover;
-  height: 740px;
 }
 </style>

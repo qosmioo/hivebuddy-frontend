@@ -13,6 +13,7 @@ import TeamSettings from "@/pages/TeamSettings.vue";
 import CreateTeam from "@/pages/CreateTeam.vue";
 import CreateTask from "@/pages/CreateTask.vue";
 import Participants from "@/pages/Participants.vue";
+import CreatePost from "@/pages/CreatePost.vue";
 
 const routes = [
     {
@@ -63,6 +64,10 @@ const routes = [
     {
         path: '/participants',
         component: Participants,
+    },
+    {
+        path: '/post-create',
+        component: CreatePost
     }
 ]
 

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-if="comments.length > 0">
       <comment-item v-for="comment in comments" :key="comment.id" :comment="comment"/>
-    </div>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
         <div class="col-sm p-0">
           <h5 class="m-2 ms-4">Новые</h5>
           <hr>
-          <task-list :tasks="tasks.filter(t => t.status === 'new')"></task-list>
+          <task-list :tasks="this.tasks.filter(t => t.status === 'new')"></task-list>
           <my-button @click="$router.push('/task-create')">Создать новую задачу</my-button>
         </div>
         <div class="col-sm p-0">
@@ -27,6 +27,7 @@
 <script>
 import TaskList from "@/components/TaskList.vue";
 import MyButton from "@/components/UI/MyButton.vue";
+import {getTasksByGroupId} from "@/api/api.js";
 
 export default {
   components: {MyButton, TaskList, },
@@ -34,6 +35,15 @@ export default {
     return {
       tasks: []
     }
+  },
+  methods: {
+    fetchTasks() {
+      this.tasks = getTasksByGroupId(this.$store.state.teamId);
+      console.log(this.tasks)
+    }
+  },
+  mounted() {
+    this.fetchTasks()
   }
 }
 </script>

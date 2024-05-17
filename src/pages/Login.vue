@@ -31,9 +31,9 @@ export default {
     return {
       authData: {
         email: "sanin",
-        password: "111",
+        password: "",
         username: "Фёдор Санин",
-        userId: "a1653269-f31f-4799-b717-08be44b341a1",
+        userId: "8f890240-43ba-4350-aefc-c2009f3c0714",
       }
     }
   },
@@ -103,4 +103,5 @@ p {
   background-size: cover;
   height: 740px;
 }
+
 </style>

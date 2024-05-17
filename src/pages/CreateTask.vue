@@ -37,7 +37,6 @@ export default {
         creator: "",
         userId: "",
         groupId: "",
-        taskBoardId: ""
       }
     }
   },
@@ -60,12 +59,12 @@ export default {
     createTask() {
       this.task.id = this.generateUUID();
       this.task.status = "new"
-      this.task.createdAt = Date.now();
+      this.task.createdAt = "2024-05-17";
       this.task.creator = this.$store.state.userId;
       this.task.groupId = this.$store.state.teamId;
-      // this.task.taskBoardId = this.$store.state.taskBoardId;
-      // const res = postTask(this.task);
-      this.$router.push('/taskboard')
+      console.log(this.task)
+      const res = postTask(this.task);
+      // this.$router.push('/taskboard')
     }
   }
 }

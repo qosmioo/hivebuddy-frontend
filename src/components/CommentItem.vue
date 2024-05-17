@@ -2,10 +2,10 @@
   <div class="comment">
     <div class="comment-head">
       <img src="/src/images/img.jpg" alt="..." style="height: 40px; border-radius: 20px">
-      <p class="mt-3">{{ comment.name }}</p>
+      <p class="mt-3">{{ comment.userId }}</p>
     </div>
     <div class="comment-body">
-      <p>{{ comment.body }}</p>
+      <p>{{ comment.text }}</p>
     </div>
   </div>
 </template>

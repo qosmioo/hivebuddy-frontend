@@ -3,10 +3,10 @@
     <h4>Командный проект {{ $store.state.teamName }}</h4>
     <div class="d-flex flex-row align-items-center mb-4">
       <my-input v-model="searchQuery" placeholder="Поиск..."/>
-      <my-button @click="showDialog">Создать пост</my-button>
-      <my-dialog v-model:show="dialogVisible">
-        <post-form @create="createPost"/>
-      </my-dialog>
+      <my-button @click="$router.push('/post-create')">Создать пост</my-button>
+<!--      <my-dialog v-model:show="dialogVisible">-->
+<!--        <post-form @create="createPost"/>-->
+<!--      </my-dialog>-->
     </div>
     <post-list
         :posts="sortedAndSearchedPosts"

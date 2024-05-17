@@ -3,10 +3,10 @@
     <div class="card mb-3" style=" border-radius: 15px;">
       <div class="card-header bg-transparent">
         <img src="/src/images/img.jpg" alt="" style="width: 40px; border-radius: 20px">
-        <p class="card-text ms-2">{{ post.text }}</p>
+        <p class="card-text ms-2">{{ post.getUser.name }}</p>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Success card title</h5>
+        <h5 class="card-title">{{post.header}}</h5>
         <p class="card-text">{{ post.text }}</p>
       </div>
       <div class="card-footer bg-transparent">
@@ -40,6 +40,7 @@ export default {
 <style>
 .post {
   width: 600px;
+  margin-left: 50px;
 }
 
 .horizontalLine {
