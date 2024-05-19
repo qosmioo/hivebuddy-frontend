@@ -41,4 +41,9 @@ export default {
   background-color: rgba(0, 0, 0, 0.11);
   height: 100%;  /* Ограничивается только размером родительского элемента */
 }
+
+.app {
+  min-height: 800px;
+  min-width: 1000px;
+}
 </style>

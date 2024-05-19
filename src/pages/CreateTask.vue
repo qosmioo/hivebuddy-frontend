@@ -4,17 +4,16 @@
     <div class="form">
       <h5>Новая задача</h5>
       <label for="name-input" class="form-label mt-2 fs-5 fw-normal">Название задачи</label>
-      <div class="input-group mb-4">
+      <div class="input-group mb-3">
         <input type="text" class="form-control" id="description-input" placeholder="Введите название задачи" v-model="task.name">
       </div>
       <label for="description-input" class="form-label mt-2 fs-5 fw-normal">Описание задачи</label>
-      <div class="input-group mb-4">
+      <div class="input-group mb-3">
         <input type="text" class="form-control" id="description-input" placeholder="Введите описание задачи" v-model="task.description">
       </div>
       <label for="user-input" class="form-label mt-2 fs-5 fw-normal">Исполнитель</label>
-      <div class="input-group mb-4">
-        <input type="text" class="form-control" id="user-input" placeholder="Введите исполнителя задачи" v-model="task.userId">
-      </div>
+      <user-list :users="users" @userSelected="handleUserSelected"></user-list>
+      <p v-if="selectedUser">Выбранный пользователь: {{ selectedUser.name }}</p>
       <my-button style="background-color: #f6b528" @click="createTask">Сохранить</my-button>
     </div>
   </div>
@@ -22,10 +21,11 @@
 
 <script>
 import MyButton from "@/components/UI/MyButton.vue";
-import {postTask} from "@/api/api.js";
+import {getUsersByGroupId, postTask} from "@/api/api.js";
+import UserList from "@/components/UserList.vue";
 
 export default {
-  components: {MyButton},
+  components: {UserList, MyButton},
   data() {
     return {
       task: {
@@ -37,7 +37,9 @@ export default {
         creator: "",
         userId: "",
         groupId: "",
-      }
+      },
+      users: [],
+      selectedUser: null
     }
   },
   methods: {
@@ -56,16 +58,33 @@ export default {
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
       });
     },
-    createTask() {
+    async createTask() {
       this.task.id = this.generateUUID();
       this.task.status = "new"
       this.task.createdAt = "2024-05-17";
       this.task.creator = this.$store.state.userId;
       this.task.groupId = this.$store.state.teamId;
       console.log(this.task)
-      const res = postTask(this.task);
-      this.$router.push('/taskboard')
+      this.task.userId = this.selectedUser.id;
+      if (this.task.user === null) {
+        alert('No user selected')
+      } else {
+        const res = await postTask(this.task);
+        // this.$router.push('/team/' + this.$store.state.teamId + '/taskboard')
+        console.log(this.task);
+        console.log(res);
+      }
+
+    },
+    async fetchUsers() {
+      this.users = await getUsersByGroupId(this.$store.state.teamId);
+    },
+    handleUserSelected(user) {
+      this.selectedUser = user;
     }
+  },
+  mounted() {
+    this.fetchUsers();
   }
 }
 </script>
@@ -81,5 +100,4 @@ export default {
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
 }
-
 </style>

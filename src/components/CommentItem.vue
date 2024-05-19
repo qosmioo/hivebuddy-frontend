@@ -2,7 +2,7 @@
   <div class="comment">
     <div class="comment-head">
       <img src="/src/images/img.jpg" alt="..." style="height: 40px; border-radius: 20px">
-      <p class="mt-3">{{ comment.userId }}</p>
+      <p class="mt-3">{{ username }}</p>
     </div>
     <div class="comment-body">
       <p>{{ comment.text }}</p>
@@ -19,14 +19,20 @@ export default {
       type: Object,
       required: true,
     },
-    user: {
-      
+  },
+  data() {
+    return {
+      username: ""
     }
   },
   methods: {
-    fetchUser() {
-      this.user = getUserById(this.comment.userId);
+    async fetchUser() {
+      const user = await getUserById(this.comment.userId);
+      this.username = user.name
     }
+  },
+  mounted() {
+    this.fetchUser()
   }
 }
 </script>
@@ -37,7 +43,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .comment-body {
   margin: 6px 15px 15px;

@@ -2,7 +2,7 @@
   <div v-if="$store.state.isAuth">
     <div class="my-sidebar">
       <div v-if="$store.state.joinedTeam" class="d-flex flex-sm-column align-items-end sticky-top">
-        <div class="sidebar__btn" @click="$router.push('/feed')">
+        <div class="sidebar__btn" @click="$router.push('/team/' + $store.state.teamId + '/feed')">
           <img src="/src/images/feed.png" alt="..." style="width: 22px">
           <div class="btn-text">Лента</div>
         </div>
@@ -10,11 +10,11 @@
 <!--          <img src="/src/images/chats.png" alt="..." style="width: 22px">-->
 <!--          <div class="btn-text">Чаты</div>-->
 <!--        </div>-->
-        <div class="sidebar__btn" @click="$router.push('/taskboard')">
+        <div class="sidebar__btn" @click="$router.push('/team/' + $store.state.teamId + '/taskboard')">
           <img src="/src/images/task_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Доска</div>
         </div>
-        <div class="sidebar__btn" @click="$router.push('/participants')">
+        <div class="sidebar__btn" @click="$router.push('/team/' + $store.state.teamId + '/members')">
           <img src="/src/images/people_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Участники</div>
         </div>
@@ -22,7 +22,7 @@
 <!--          <img src="/src/images/materials.png" alt="..." style="width: 22px">-->
 <!--          <div class="btn-text">Материалы</div>-->
 <!--        </div>-->
-        <div class="sidebar__btn" @click="$router.push('/team-settings/' + $store.state.teamId)">
+        <div class="sidebar__btn" @click="$router.push('/settings/team/' + $store.state.teamId)">
           <img src="/src/images/settings.png" alt="..." style="width: 22px">
           <div class="btn-text">Настройки</div>
         </div>
@@ -40,7 +40,7 @@
 <!--          <img src="/src/images/teams_archive.png" alt="..." style="width: 24px">-->
 <!--          <div class="btn-text">Архив</div>-->
 <!--        </div>-->
-        <div class="sidebar__btn" @click="$router.push('/profile')">
+        <div class="sidebar__btn" @click="$router.push('/settings/profile/' + this.$store.state.userId)">
           <img src="/src/images/settings.png" alt="..." style="width: 24px">
           <div class="btn-text">Настройки</div>
         </div>

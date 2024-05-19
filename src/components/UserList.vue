@@ -4,6 +4,7 @@
     :user="user"
     :key="user.id"
     @remove="$emit('remove', user)"
+    @click="$emit('userSelected', user)"
   />
 
 </template>
@@ -23,7 +24,5 @@ export default {
 </script>
 
 <style>
-.user-list{
-  margin: 15px;
-}
+
 </style>

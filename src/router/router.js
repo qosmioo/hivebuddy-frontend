@@ -12,7 +12,7 @@ import ProfileSettings from "@/pages/ProfileSettings.vue";
 import TeamSettings from "@/pages/TeamSettings.vue";
 import CreateTeam from "@/pages/CreateTeam.vue";
 import CreateTask from "@/pages/CreateTask.vue";
-import Participants from "@/pages/Participants.vue";
+import Participants from "@/pages/Members.vue";
 import CreatePost from "@/pages/CreatePost.vue";
 
 const routes = [
@@ -21,7 +21,7 @@ const routes = [
         component: Main
     },
     {
-        path: '/feed',
+        path: '/team/:id/feed',
         component: PostPage,
     },
     {
@@ -37,20 +37,20 @@ const routes = [
         component: SignupPage
     },
     {
-        path: '/posts/:id',
+        path: '/post/:id',
         component: PostIdPage,
         name: 'postId',
     },
     {
-        path: '/taskboard',
+        path: '/team/:id/taskboard',
         component: TaskBoard,
     },
     {
-        path: '/profile',
+        path: '/settings/profile/:id',
         component: ProfileSettings
     },
     {
-        path: '/team-settings/:id',
+        path: '/settings/team/:id',
         component: TeamSettings
     },
     {
@@ -62,7 +62,7 @@ const routes = [
         component: CreateTask
     },
     {
-        path: '/participants',
+        path: '/team/:id/members',
         component: Participants,
     },
     {

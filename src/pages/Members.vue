@@ -1,6 +1,10 @@
 <template>
   <div class="background">
-    <h4>Командный проект {{ $store.state.teamName }}</h4>
+    <h4 class="mb-3">Командный проект {{ $store.state.teamName }}</h4>
+    <div class="d-flex flex-row align-items-center gap-4">
+      <h4>Участники</h4>
+      <my-button style="background-color: #f6b528">Добавить участника</my-button>
+    </div>
     <div class="form">
       <user-list :users="users"></user-list>
     </div>
@@ -10,9 +14,10 @@
 <script>
 import UserList from "@/components/UserList.vue";
 import {getUsersByGroupId} from "@/api/api.js";
+import MyButton from "@/components/UI/MyButton.vue";
 
 export default {
-  components: {UserList},
+  components: {MyButton, UserList},
   data() {
     return {
       users: []
@@ -32,16 +37,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 15px;
-  background-color: white;
-}
-
 .background {
-  height: 700px;
+  min-height: 700px;
   background-image: url("/src/images/background.png");
   background-size: auto;
 }

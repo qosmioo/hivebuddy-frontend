@@ -8,6 +8,7 @@
     <post-list
         :posts="sortedAndSearchedPosts"
         v-if="!isPostsLoading"
+        @commentAdded="handleCommentAdded"
     />
     <div v-else>Идет загрузка...</div>
   </div>
@@ -21,7 +22,7 @@ import axios from 'axios';
 import MyButton from "@/components/UI/MyButton.vue";
 import MySelect from "@/components/UI/MySelect.vue";
 import MyInput from "@/components/UI/MyInput.vue";
-import {getPostsByGroupId} from "@/api/api.js";
+import {getPostsByGroupId, postPostFeedback} from "@/api/api.js";
 
 export default {
   components: {
@@ -61,6 +62,10 @@ export default {
       this.totalPages = Math.ceil(response.length / this.limit)
       this.posts = response;
     },
+    handleCommentAdded(comment) {
+      const res = postPostFeedback(comment)
+      this.$router.push('/post/' + comment.postId)
+    },
   },
   mounted() {
     this.fetchPosts();
@@ -82,6 +87,7 @@ export default {
 .posts {
   background-image: url("/src/images/background.png");
   background-size: cover;
+  min-height: 700px;
 }
 
 </style>

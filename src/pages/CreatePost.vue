@@ -53,7 +53,7 @@ export default {
     },
     createPost() {
       this.post.id = this.generateUUID();
-      postPost(this.post)
+      const res = postPost(this.post)
       this.$router.push('/feed')
     }
   }

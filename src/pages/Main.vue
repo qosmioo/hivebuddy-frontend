@@ -63,7 +63,6 @@ export default {
 
 .cards {
   margin: 70px auto auto;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -77,6 +76,6 @@ button {
   border-radius: 15px;
   height: 80px;
   width: 300px;
-  margin: 70px 300px;
+  margin: 70px 42.6%;
 }
 </style>

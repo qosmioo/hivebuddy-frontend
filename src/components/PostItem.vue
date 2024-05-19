@@ -14,8 +14,8 @@
           <p class="link-primary" @click="openPost" style="cursor: pointer">&#8226;{{ post.postsFeedBacks.length }} комментарий. Развернуть комментарии</p>
         </div>
         <div class="input-group mb-3 mt-3">
-          <input type="text" class="form-control" placeholder="Оставить комментарий">
-          <button class="btn btn-success" type="button" id="button-addon2">Отправить</button>
+          <input type="text" class="form-control" placeholder="Оставить комментарий" v-model="this.comment.text">
+          <button class="btn btn-success" type="button" id="button-addon2" @click="addComment">Отправить</button>
         </div>
       </div>
     </div>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import {postPostFeedback} from "@/api/api.js";
 
 export default {
   props: {
@@ -33,47 +32,45 @@ export default {
       required: true,
     },
   },
-  // data() {
-  //   return {
-  //     comment: {
-  //       id: "",
-  //       text: "",
-  //       userId: "",
-  //       createdAt: "",
-  //       postId: ""
-  //     }
-  //   }
-  // },
+  data() {
+    return {
+      comment: {
+        id: "",
+        text: "",
+        userId: "",
+        createdAt: "",
+        postId: ""
+      }
+    }
+  },
   methods: {
     openPost() {
-      this.$router.push('/posts/' + this.post.id);
+      this.$router.push('/post/' + this.post.id);
     },
 
-    // generateUUID() { // Public Domain/MIT
-    //   let d = new Date().getTime();//Timestamp
-    //   let d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;
-    //   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    //     let r = Math.random() * 16;
-    //     if (d > 0){
-    //       r = (d + r)%16 | 0;
-    //       d = Math.floor(d/16);
-    //     } else {
-    //       r = (d2 + r)%16 | 0;
-    //       d2 = Math.floor(d2/16);
-    //     }
-    //     return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    //   });
-    // },
-    // addComment() {
-    //   console.log(this.comment)
-    //   this.comment.id = this.generateUUID()
-    //   this.comment.userId = this.$store.state.id
-    //   this.comment.createdAt = "2024-05-17"
-    //   this.comment.postId = this.post.id
-    //   const res = postPostFeedback(this.comment)
-    //   this.comment.text = ""
-    //   this.openPost()
-    // }
+    generateUUID() { // Public Domain/MIT
+      let d = new Date().getTime();//Timestamp
+      let d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        let r = Math.random() * 16;
+        if (d > 0){
+          r = (d + r)%16 | 0;
+          d = Math.floor(d/16);
+        } else {
+          r = (d2 + r)%16 | 0;
+          d2 = Math.floor(d2/16);
+        }
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    },
+    addComment() {
+      this.comment.id = this.generateUUID()
+      this.comment.userId = this.$store.state.userId
+      this.comment.createdAt = "2024-05-17"
+      this.comment.postId = this.post.id
+      this.$emit('commentAdded', this.comment);
+      this.comment.text = ""
+    }
   }
 }
 </script>
@@ -81,7 +78,6 @@ export default {
 <style>
 .post {
   width: 600px;
-  margin-left: 0;
 }
 
 .horizontalLine {

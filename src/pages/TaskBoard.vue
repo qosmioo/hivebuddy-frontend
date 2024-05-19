@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="board">
     <h4>Командный проект {{ $store.state.teamName }}</h4>
     <div class="container taskboard">
       <div class="row">
@@ -27,20 +27,21 @@
 <script>
 import TaskList from "@/components/TaskList.vue";
 import MyButton from "@/components/UI/MyButton.vue";
-import {getTasksByGroupId} from "@/api/api.js";
+import {getTasksByGroupId, getUsersByGroupId} from "@/api/api.js";
 
 export default {
   components: {MyButton, TaskList, },
   data() {
     return {
-      tasks: []
+      tasks: [],
     }
   },
   methods: {
     async fetchTasks() {
       this.tasks = await getTasksByGroupId(this.$store.state.teamId);
       console.log(this.tasks)
-    }
+    },
+
   },
   mounted() {
     this.fetchTasks()
@@ -49,10 +50,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.board {
+  background-image: url("/src/images/background.png");
+  background-size: cover;
+  min-height: 700px;
+  min-width: 1000px;
+}
 .taskboard {
+  width: 100%;
   margin: 30px 20px;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
+  background-color: white;
 }
 .verticalLine {
   width: 1px;

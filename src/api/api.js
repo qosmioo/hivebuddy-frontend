@@ -77,6 +77,11 @@ export const getTasksByGroupId = async(groupId) => {
     return await response.json();
 }
 
+export const putUserById = async (userId, user) => {
+    const response = await sendApiRequest("/api/getUser/" + userId, "PUT", user);
+    return await response.json();
+}
+
 const sendApiRequest = async (path, method = "GET", body = "") => {
     return await fetch(URL + path, {
         method: method,

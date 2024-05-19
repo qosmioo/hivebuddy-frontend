@@ -1,8 +1,8 @@
 <template>
-  <div class="post background">
+  <div class="posts background">
     <h4>Командный проект 5</h4>
     <p>Пост {{ this.post.id }}</p>
-    <div class="card mb-3">
+    <div class="card mb-3" style="margin-left: 30px; border-radius: 15px">
       <div class="card-header bg-transparent">
         <img src="/src/images/img.jpg" alt="" style="width: 40px; border-radius: 20px">
         <p class="card-text ms-2">{{ this.post.getUser.name }}</p>
@@ -112,8 +112,9 @@ export default {
 </script>
 
 <style>
-.post {
-  width: 600px;
+.posts {
+  min-height: 800px;
+  min-width: 1000px;
 }
 
 .card-header {

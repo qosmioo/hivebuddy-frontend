@@ -4,7 +4,7 @@
       v-for="post in posts"
       :post="post"
       :key="post.id"
-      @remove="$emit('remove', post)"
+      @commentAdded="$emit('commentAdded', $event)"
     />
   </div>
   <h2 v-else style="color:green" class="post-list">
@@ -29,5 +29,6 @@ export default {
 <style>
 .post-list{
   margin-bottom: 15px;
+  margin-left: 30px;
 }
 </style>
