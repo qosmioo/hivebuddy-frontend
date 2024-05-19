@@ -1,9 +1,9 @@
 <template>
   <div class="task">
-    <h5>{{ task.name }}</h5>
+    <h5 class="m-2">{{ task.name }}</h5>
     <div class="task-person">
       <img src="/src/images/img.jpg" alt="..." style="height: 40px; border-radius: 20px">
-      <p class="mt-3">{{ task.userId }}</p>
+      <p class="mt-3">Фёдор</p>
     </div>
     <p>{{ task.description }}</p>
     <p>{{ task.createdAt }}</p>
@@ -28,9 +28,14 @@ export default {
   align-items: flex-start;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .task-person {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   margin: 6px 15px 15px;
 }
 </style>

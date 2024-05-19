@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <div class="post background">
     <h4>Командный проект 5</h4>
     <p>Пост {{ this.post.id }}</p>
     <div class="card mb-3">
@@ -13,7 +13,7 @@
       </div>
       <div class="card-footer bg-transparent">
 <!--        <p class="link-primary">Развернуть комментарии</p>-->
-        <CommentList :comments="post.postsFeedbacks"></CommentList>
+        <CommentList :comments="post.postsFeedBacks"></CommentList>
         <div class="input-group mb-3 mt-3">
           <input type="text" class="form-control" placeholder="Оставить комментарий" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="this.comment.text">
           <button class="btn btn-success" type="button" id="button-addon2" @click="addComment">Отправить</button>
@@ -53,7 +53,7 @@ export default {
           userGroups: []
         },
         groupId: "",
-        postsFeedbacks: []
+        postsFeedBacks: []
       },
       comment: {
         id: "",
@@ -72,7 +72,11 @@ export default {
       catch (error) {
         console.log(error)
       }
-      console.log(this.post.postsFeedbacks)
+      console.log(this.post)
+      console.log(this.post.postsFeedBacks)
+    },
+    reloadPage() {
+      window.location.reload();
     },
     generateUUID() { // Public Domain/MIT
       let d = new Date().getTime();//Timestamp
@@ -97,6 +101,7 @@ export default {
       // console.log(this.comment)
       const res = postPostFeedback(this.comment)
       this.comment.text = ""
+      this.reloadPage()
     }
   },
   mounted() {
@@ -108,12 +113,7 @@ export default {
 
 <style>
 .post {
-  margin-left: 80px;
   width: 600px;
-  background-image: url("/src/images/background.png");
-  background-size: auto;
-  height: 740px;
-
 }
 
 .card-header {
@@ -127,5 +127,11 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.background {
+  height: 700px;
+  background-image: url("/src/images/background.png");
+  background-size: auto;
 }
 </style>

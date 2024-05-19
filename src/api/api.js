@@ -12,6 +12,16 @@ export const getTeamsByUserId = async (userId) => {
     return await response.json();
 }
 
+export const getTeamById = async (teamId) => {
+    const response = await sendApiRequest("/api/groups/" + teamId);
+    return await response.json();
+}
+
+export const getUserById = async (userId) => {
+    const response = await sendApiRequest("/api/getUser/" + userId);
+    return await response.json();
+}
+
 export const postPost = async (post) => {
     const response = await sendApiRequest("/api/post", "POST", post);
     return await response.json();

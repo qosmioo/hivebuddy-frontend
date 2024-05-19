@@ -6,7 +6,7 @@
         <my-sidebar></my-sidebar>
         <div class="verticalLine"></div>
       </div>
-      <div v-if="$store.state.isAuth" class="col-sm-6 p-3 min-vh-100">
+      <div v-if="$store.state.isAuth" class="col-sm-6 p-3 min-vh-400">
         <div class="app">
           <router-view></router-view>
         </div>

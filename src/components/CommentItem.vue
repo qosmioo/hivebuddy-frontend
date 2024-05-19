@@ -11,13 +11,23 @@
 </template>
 
 <script>
+import {getUserById} from "@/api/api.js";
+
 export default {
   props: {
     comment: {
       type: Object,
       required: true,
+    },
+    user: {
+      
     }
   },
+  methods: {
+    fetchUser() {
+      this.user = getUserById(this.comment.userId);
+    }
+  }
 }
 </script>
 

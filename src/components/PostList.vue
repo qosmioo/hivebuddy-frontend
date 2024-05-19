@@ -28,6 +28,6 @@ export default {
 
 <style>
 .post-list{
-  margin: 15px;
+  margin-bottom: 15px;
 }
 </style>

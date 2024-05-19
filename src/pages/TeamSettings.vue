@@ -7,7 +7,7 @@
           <div class="col-sm-7">
             <label for="name-input" class="form-label fs-5">Название команды</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" id="name-input" placeholder="Введите название команды" v-model="team.name">
+              <input type="text" class="form-control" id="name-input"  v-model="team.name">
             </div>
             <label for="description-input" class="form-label mt-2 fs-5">Описание команды</label>
             <div class="input-group mb-4">
@@ -33,14 +33,14 @@
 <script>
 import MyButton from "@/components/UI/MyButton.vue";
 import MyHorizontalLine from "@/components/UI/MyHorizontalLine.vue";
-import {DeleteTeam, PostTeam, PutTeam} from "@/api/api.js";
+import {DeleteTeam, getTeamById, PutTeam} from "@/api/api.js";
 
 export default {
   components: {MyButton, MyHorizontalLine},
   data() {
     return {
       team: {
-        id: this.$store.state.teamId,
+        id: this.$route.params.id,
         name: "",
         description: "",
         avatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -51,14 +51,24 @@ export default {
   methods: {
     async updateTeam() {
       const res = await PutTeam(this.team)
+      this.$store.commit("setTeam", this.team)
       this.team.name = ""
       this.team.description = ""
+      this.$router.go(-1)
     },
     async deleteTeam() {
       this.$store.commit('leaveTeam')
       this.$router.push('/teams')
       const res = await DeleteTeam(this.team.id)
+    },
+    async fetchTeam() {
+      const res = await getTeamById(this.team.id)
+      this.team.name = res.name
+      this.team.description = res.description
     }
+  },
+  mounted() {
+    this.fetchTeam()
   }
 }
 </script>

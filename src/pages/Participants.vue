@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h4>Командный проект {{ $store.state.teamName }}</h4>
     <div class="form">
       <user-list :users="users"></user-list>
@@ -37,5 +37,12 @@ export default {
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.14);
   border-radius: 15px;
+  background-color: white;
+}
+
+.background {
+  height: 700px;
+  background-image: url("/src/images/background.png");
+  background-size: auto;
 }
 </style>

@@ -64,7 +64,7 @@ export default {
       this.task.groupId = this.$store.state.teamId;
       console.log(this.task)
       const res = postTask(this.task);
-      // this.$router.push('/taskboard')
+      this.$router.push('/taskboard')
     }
   }
 }
