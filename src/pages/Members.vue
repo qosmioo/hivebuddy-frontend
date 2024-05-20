@@ -42,4 +42,8 @@ export default {
   background-image: url("/src/images/background.png");
   background-size: auto;
 }
+
+.form {
+  background-color: white;
+}
 </style>

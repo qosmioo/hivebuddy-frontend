@@ -6,10 +6,6 @@
           <img src="/src/images/feed.png" alt="..." style="width: 22px">
           <div class="btn-text">Лента</div>
         </div>
-<!--        <div class="sidebar__btn" @click="$router.push('/posts')">-->
-<!--          <img src="/src/images/chats.png" alt="..." style="width: 22px">-->
-<!--          <div class="btn-text">Чаты</div>-->
-<!--        </div>-->
         <div class="sidebar__btn" @click="$router.push('/team/' + $store.state.teamId + '/taskboard')">
           <img src="/src/images/task_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Доска</div>
@@ -18,10 +14,6 @@
           <img src="/src/images/people_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Участники</div>
         </div>
-<!--        <div class="sidebar__btn" @click="$router.push('/posts')">-->
-<!--          <img src="/src/images/materials.png" alt="..." style="width: 22px">-->
-<!--          <div class="btn-text">Материалы</div>-->
-<!--        </div>-->
         <div class="sidebar__btn" @click="$router.push('/settings/team/' + $store.state.teamId)">
           <img src="/src/images/settings.png" alt="..." style="width: 22px">
           <div class="btn-text">Настройки</div>
@@ -32,20 +24,11 @@
           <img src="/src/images/people_2.png" alt="..." style="width: 24px">
           <div class="btn-text">Команды</div>
         </div>
-<!--        <div class="sidebar__btn" @click="$router.push('/teams')">-->
-<!--          <img src="/src/images/task.png" alt="..." style="width: 24px">-->
-<!--          <div class="btn-text">Задачи</div>-->
-<!--        </div>-->
-<!--        <div class="sidebar__btn" @click="$router.push('/teams')">-->
-<!--          <img src="/src/images/teams_archive.png" alt="..." style="width: 24px">-->
-<!--          <div class="btn-text">Архив</div>-->
-<!--        </div>-->
         <div class="sidebar__btn" @click="$router.push('/settings/profile/' + this.$store.state.userId)">
           <img src="/src/images/settings.png" alt="..." style="width: 24px">
           <div class="btn-text">Настройки</div>
         </div>
       </div>
-<!--      <div class="verticalLine"></div>-->
     </div>
   </div>
 </template>

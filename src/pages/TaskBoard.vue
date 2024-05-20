@@ -6,18 +6,18 @@
         <div class="col-sm p-0">
           <h5 class="m-2 ms-4">Новые</h5>
           <hr>
-          <task-list :tasks="this.tasks"></task-list>
+          <task-list :tasks="this.tasks.filter(t => t.status === 'new')"></task-list>
           <my-button @click="$router.push('/task-create')">Создать новую задачу</my-button>
         </div>
         <div class="col-sm p-0">
           <h5 class="m-2 ms-4">Выполняются</h5>
           <hr>
-<!--          <task-list :tasks="tasks"></task-list>-->
+          <task-list :tasks="tasks.filter(t => t.status === 'in progress')"></task-list>
         </div>
         <div class="col-sm p-0">
           <h5 class="m-2 ms-4">Выполненные</h5>
           <hr>
-<!--          <task-list :tasks="tasks"></task-list>-->
+          <task-list :tasks="tasks.filter(t => t.status === 'done')"></task-list>
         </div>
       </div>
     </div>
@@ -54,10 +54,10 @@ export default {
   background-image: url("/src/images/background.png");
   background-size: cover;
   min-height: 700px;
-  min-width: 1000px;
+  min-width: 900px;
 }
 .taskboard {
-  width: 100%;
+  width: 80%;
   margin: 30px 20px;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;

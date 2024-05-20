@@ -33,7 +33,7 @@ export default {
         email: "sanin",
         password: "",
         username: "Фёдор Санин",
-        userId: "1c0c4314-745a-48dd-9d99-38d204548682",
+        userId: "8f890240-43ba-4350-aefc-c2009f3c0714",
       }
     }
   },

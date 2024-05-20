@@ -66,7 +66,7 @@ export default {
       this.team.id = this.generateUUID()
       this.team.userId = this.$store.state.userId
       this.$store.commit('setTeam', this.team)
-      this.$router.push('/feed')
+      this.$router.push('/team/' + this.team.id + '/feed')
       const res = await PostTeam(this.team)
     }
   }
@@ -76,7 +76,7 @@ export default {
 <style lang="scss" scoped>
 .form {
   margin: 30px 40px;
-  width: 100%;
+  width: 80%;
   border: 1px rgba(0, 0, 0, 0.14) solid;
   border-radius: 15px;
   background-color: white;

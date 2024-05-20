@@ -70,9 +70,7 @@ export default {
         alert('No user selected')
       } else {
         const res = await postTask(this.task);
-        // this.$router.push('/team/' + this.$store.state.teamId + '/taskboard')
-        console.log(this.task);
-        console.log(res);
+        this.$router.push('/team/' + this.$store.state.teamId + '/taskboard')
       }
 
     },

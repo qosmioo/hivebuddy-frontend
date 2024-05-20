@@ -7,7 +7,7 @@
           <div class="col-sm-7">
             <label for="name-input" class="form-label fs-5">Название команды</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" id="name-input"  v-model="team.name">
+              <input type="text" class="form-control" id="name-input" v-model="this.team.name" ref="inputRef">
             </div>
             <label for="description-input" class="form-label mt-2 fs-5">Описание команды</label>
             <div class="input-group mb-4">
@@ -34,6 +34,8 @@
 import MyButton from "@/components/UI/MyButton.vue";
 import MyHorizontalLine from "@/components/UI/MyHorizontalLine.vue";
 import {DeleteTeam, getTeamById, PutTeam} from "@/api/api.js";
+import {ref} from "vue";
+const inputRef = ref(null);
 
 export default {
   components: {MyButton, MyHorizontalLine},
@@ -65,10 +67,11 @@ export default {
       const res = await getTeamById(this.team.id)
       this.team.name = res.name
       this.team.description = res.description
-    }
+    },
   },
   mounted() {
     this.fetchTeam()
+    inputRef.value.value = 'Автоматический текст';
   }
 }
 </script>

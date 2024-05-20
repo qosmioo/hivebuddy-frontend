@@ -114,7 +114,7 @@ export default {
 <style>
 .posts {
   min-height: 800px;
-  min-width: 1000px;
+  min-width: 800px;
 }
 
 .card-header {

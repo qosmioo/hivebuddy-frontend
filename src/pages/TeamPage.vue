@@ -5,11 +5,6 @@
     >
       Создать новую команду
     </my-button>
-<!--    <my-dialog v-model:show="dialogVisible">-->
-<!--      <team-form-->
-<!--          @create="createTeam"-->
-<!--      />-->
-<!--    </my-dialog>-->
     <team-list :teams="teams"></team-list>
   </div>
 </template>
@@ -60,8 +55,8 @@ export default {
 .teamPage {
   background-image: url("/src/images/background.png");
   background-size: cover;
-  height: 740px;
-  width: 100%;
+  min-height: 740px;
+  min-width: 900px;
   z-index: -1;
 }
 </style>
