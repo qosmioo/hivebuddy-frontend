@@ -54,7 +54,7 @@ export default {
     createPost() {
       this.post.id = this.generateUUID();
       const res = postPost(this.post)
-      this.$router.push('/feed')
+      this.$router.push('/team/' + this.$store.state.teamId + '/feed')
     }
   }
 }

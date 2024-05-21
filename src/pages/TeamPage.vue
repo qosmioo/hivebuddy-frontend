@@ -5,7 +5,12 @@
     >
       Создать новую команду
     </my-button>
-    <team-list :teams="teams"></team-list>
+    <div v-if="teams.length === 0">
+      <h1 style="color: green; margin-left: 30px">Создайте команду!</h1>
+    </div>
+    <div v-else>
+      <team-list :teams="teams"></team-list>
+    </div>
   </div>
 </template>
 

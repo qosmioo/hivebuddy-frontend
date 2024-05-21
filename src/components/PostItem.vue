@@ -47,7 +47,6 @@ export default {
     openPost() {
       this.$router.push('/post/' + this.post.id);
     },
-
     generateUUID() { // Public Domain/MIT
       let d = new Date().getTime();//Timestamp
       let d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now() * 1000)) || 0;

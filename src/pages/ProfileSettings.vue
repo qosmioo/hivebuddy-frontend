@@ -69,6 +69,8 @@ export default {
   methods: {
     async fetchUser() {
       this.user = await getUserById(this.$store.state.userId);
+      this.new_name = this.user.name
+      this.new_email = this.user.email
     },
     async updateProfile() {
       if (this.new_name !== "" && this.new_email !== "") {

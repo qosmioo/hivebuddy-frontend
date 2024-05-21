@@ -4,20 +4,32 @@
     <div class="container taskboard">
       <div class="row">
         <div class="col-sm p-0">
-          <h5 class="m-2 ms-4">Новые</h5>
+          <h5 class="m-2 ms-5">Новые</h5>
           <hr>
-          <task-list :tasks="this.tasks.filter(t => t.status === 'new')"></task-list>
+          <task-list :tasks="this.tasks.filter(t => t.status === 'New')"
+             @taskGetOlder="handleTaskGetOlder"
+             @taskGetYounger="handleTaskGetYounger"
+             @taskDeleted="handleTaskDeleted">
+          </task-list>
           <my-button @click="$router.push('/task-create')">Создать новую задачу</my-button>
         </div>
         <div class="col-sm p-0">
-          <h5 class="m-2 ms-4">Выполняются</h5>
+          <h5 class="m-2 ms-5">Выполняются</h5>
           <hr>
-          <task-list :tasks="tasks.filter(t => t.status === 'in progress')"></task-list>
+          <task-list :tasks="tasks.filter(t => t.status === 'In-progress')"
+             @taskGetOlder="handleTaskGetOlder"
+             @taskGetYounger="handleTaskGetYounger"
+             @taskDeleted="handleTaskDeleted">>
+          </task-list>
         </div>
         <div class="col-sm p-0">
-          <h5 class="m-2 ms-4">Выполненные</h5>
+          <h5 class="m-2 ms-5">Выполненные</h5>
           <hr>
-          <task-list :tasks="tasks.filter(t => t.status === 'done')"></task-list>
+          <task-list :tasks="tasks.filter(t => t.status === 'Done')"
+             @taskGetOlder="handleTaskGetOlder"
+             @taskGetYounger="handleTaskGetYounger"
+             @taskDeleted="handleTaskDeleted">>
+          </task-list>
         </div>
       </div>
     </div>
@@ -27,7 +39,7 @@
 <script>
 import TaskList from "@/components/TaskList.vue";
 import MyButton from "@/components/UI/MyButton.vue";
-import {getTasksByGroupId, getUsersByGroupId} from "@/api/api.js";
+import {deleteTaskById, getTasksByGroupId, getUsersByGroupId, putTaskById} from "@/api/api.js";
 
 export default {
   components: {MyButton, TaskList, },
@@ -39,9 +51,30 @@ export default {
   methods: {
     async fetchTasks() {
       this.tasks = await getTasksByGroupId(this.$store.state.teamId);
-      console.log(this.tasks)
     },
-
+    async handleTaskGetYounger(task) {
+      if (task.status === 'In-progress') {
+        task.status = 'New';
+        await putTaskById(task)
+      } else if (task.status === 'Done') {
+        task.status = 'In-progress';
+        await putTaskById(task)
+      }
+    },
+    async handleTaskGetOlder(task) {
+      if (task.status === 'In-progress') {
+        task.status = 'Done';
+        await putTaskById(task)
+      } else if (task.status === 'New') {
+        task.status = 'In-progress';
+        await putTaskById(task)
+      }
+      console.log(task)
+    },
+    async handleTaskDeleted(task) {
+      location.reload();
+      await deleteTaskById(task.id)
+    },
   },
   mounted() {
     this.fetchTasks()

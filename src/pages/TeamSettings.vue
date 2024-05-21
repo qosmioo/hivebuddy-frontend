@@ -7,11 +7,11 @@
           <div class="col-sm-7">
             <label for="name-input" class="form-label fs-5">Название команды</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" id="name-input" v-model="this.team.name" ref="inputRef">
+              <input type="text" class="form-control" id="name-input" v-model="this.team.name" placeholder="Введите имя">
             </div>
             <label for="description-input" class="form-label mt-2 fs-5">Описание команды</label>
             <div class="input-group mb-4">
-              <input type="email" class="form-control" id="description-input" placeholder="Введите описание команды" v-model="team.description">
+              <input type="email" class="form-control" id="description-input" placeholder="Введите описание" v-model="team.description">
             </div>
             <my-button @click="updateTeam">Сохранить</my-button>
             <my-button @click="deleteTeam" style="background-color: red; ">Удалить</my-button>
@@ -34,7 +34,7 @@
 import MyButton from "@/components/UI/MyButton.vue";
 import MyHorizontalLine from "@/components/UI/MyHorizontalLine.vue";
 import {DeleteTeam, getTeamById, PutTeam} from "@/api/api.js";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 const inputRef = ref(null);
 
 export default {
@@ -47,7 +47,7 @@ export default {
         description: "",
         avatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         userId: this.$store.state.userId
-      }
+      },
     }
   },
   methods: {
@@ -71,8 +71,8 @@ export default {
   },
   mounted() {
     this.fetchTeam()
-    inputRef.value.value = 'Автоматический текст';
-  }
+  },
+
 }
 </script>
 

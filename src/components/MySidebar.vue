@@ -14,6 +14,10 @@
           <img src="/src/images/people_2.png" alt="..." style="width: 22px">
           <div class="btn-text">Участники</div>
         </div>
+        <div class="sidebar__btn" @click="$router.push('/team/' + $store.state.teamId + '/leaderboard')">
+          <img src="/src/images/people_2.png" alt="..." style="width: 22px">
+          <div class="btn-text">Лидерборд</div>
+        </div>
         <div class="sidebar__btn" @click="$router.push('/settings/team/' + $store.state.teamId)">
           <img src="/src/images/settings.png" alt="..." style="width: 22px">
           <div class="btn-text">Настройки</div>

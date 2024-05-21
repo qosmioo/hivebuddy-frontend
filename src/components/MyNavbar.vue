@@ -7,9 +7,12 @@
             <div class="navbar-brand" @click="leaveTeam">
               <img src="/src/images/logo.png" alt="" width="120" height="30" style="cursor: pointer; ">
             </div>
-            <div class="d-flex align-items-center gap-2">
-              <img src="/src/images/avatar.png" alt="" height="40" style="cursor: pointer; ">
-              <a class="link-opacity-100" href="/" @click="$store.commit('logout')">Выход</a>
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center flex-column p-0">
+                <div class="fw-bold" style="color: #3b247b;">{{this.$store.state.email}}</div>
+                <div>{{this.$store.state.username}}</div>
+              </div>
+              <img src="/src/images/logout.png" @click="logout" alt="..." style="width: 35px; cursor: pointer; ">
             </div>
           </div>
         </nav>
@@ -31,6 +34,10 @@ export default {
     },
     login() {
       this.$router.push('/login')
+    },
+    logout() {
+      this.$store.commit('logout')
+      this.$router.push('/')
     }
   },
 

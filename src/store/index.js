@@ -3,6 +3,7 @@ import createPersistedState from "vuex-persistedstate";
 
 export const store= createStore({
     state: {
+        authToken: "",
         joinedTeam: false,
         teamId: "",
         teamName: "",
@@ -10,7 +11,6 @@ export const store= createStore({
         hideNav: true,
         email: "",
         username: "",
-        password: "",
         userId: "",
     },
     mutations: {

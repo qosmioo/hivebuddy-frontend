@@ -2,13 +2,14 @@
   <div class="login">
     <div class="form">
       <img src="/src/images/logo.png" alt="" width="120" height="30" style="margin:15px;">
+      <div v-if="loginError" style="color: red">Неверный логин или пароль</div>
       <div class="input-group flex-nowrap m-2">
-        <input type="email" class="form-control" placeholder="Электронная почта" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.login">
+        <input type="email" class="form-control" placeholder="Электронная почта" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.email">
       </div>
       <div class="input-group flex-nowrap m-2">
         <input type="password" class="form-control" placeholder="Пароль" aria-label="Username" aria-describedby="addon-wrapping" v-model="authData.password">
       </div>
-      <my-button @click="mockAuthentication">Войти</my-button>
+      <my-button @click="signIn">Войти</my-button>
       <p @click="$router.push('/signup')" style="cursor: pointer">У меня нет аккаунта</p>
       <div class="horizontalLine"></div>
       <div class="d-flex align-items-center gap-2">
@@ -24,40 +25,44 @@
 import MyButton from "@/components/UI/MyButton.vue";
 import {sendLoginRequest} from "@/api/api.js";
 
-
 export default {
   components: {MyButton},
   data() {
     return {
       authData: {
-        email: "sanin",
-        password: "",
-        username: "Фёдор Санин",
-        userId: "8f890240-43ba-4350-aefc-c2009f3c0714",
-      }
+        email: "",
+        username: "",
+        userId: "",
+      },
+      loginError: false
     }
   },
   methods: {
-    // async signIn() {
-    //   const authData = await sendLoginRequest(this.authData.login, this.authData.password);
-    //   console.log(authData);
-    //   if (!(authData.status === 404) && this.authData.login !== "" && this.authData.password !== "") {
-    //     // localStorage.setItem('authData', JSON.stringify(authData));
-    //     console.log(authData);
-    //     this.$router.push('/teams');
-    //   } else {
-    //     console.log(authData);
-    //     this.authData.login = "";
-    //     this.authData.password = "";
-    //   }
-    // },
-    mockAuthentication() {
-      this.$store.commit("login", this.authData);
-      console.log(this.$store.state.joinedTeam)
+    parseJwt (token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
 
-      // console.log(this.$store.state, this.$store.state.userId);
-      this.$router.push('/teams');
-    }
+      return JSON.parse(jsonPayload);
+    },
+    async signIn() {
+      const data = await sendLoginRequest(this.authData.email.replace('@', '%40'), this.authData.password);
+      console.log(data.code)
+      if (data.status !== 400 && data.code !== 500) {
+        const decoded = this.parseJwt(data)
+        console.log(decoded);
+        this.authData.email = decoded.Email;
+        this.authData.username = decoded.Name;
+        this.authData.userId = decoded.Id;
+        console.log(this.authData)
+        this.$store.commit("login", this.authData);
+        this.$router.push('/teams');
+      } else {
+        this.loginError = true;
+      }
+    },
   }
 }
 </script>

@@ -3,9 +3,9 @@
     <h4 class="mb-3">Командный проект {{ $store.state.teamName }}</h4>
     <div class="d-flex flex-row align-items-center gap-4">
       <h4>Участники</h4>
-      <my-button style="background-color: #f6b528">Добавить участника</my-button>
+      <my-button style="background-color: #f6b528" @click="this.$router.push('/member-add')">Добавить участника</my-button>
     </div>
-    <div class="form">
+    <div class="form-members">
       <user-list :users="users"></user-list>
     </div>
   </div>
@@ -43,7 +43,12 @@ export default {
   background-size: auto;
 }
 
-.form {
+.form-members {
+  margin: 20px 30px;
+  padding: 10px;
+  width: 50%;
   background-color: white;
+  border: 1px rgba(0, 0, 0, 0.14) solid;;
+  border-radius: 15px;
 }
 </style>

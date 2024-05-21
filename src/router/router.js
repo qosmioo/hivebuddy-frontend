@@ -14,6 +14,8 @@ import CreateTeam from "@/pages/CreateTeam.vue";
 import CreateTask from "@/pages/CreateTask.vue";
 import Participants from "@/pages/Members.vue";
 import CreatePost from "@/pages/CreatePost.vue";
+import AddMember from "@/pages/AddMember.vue";
+import Leaderboard from "@/pages/Leaderboard.vue";
 
 const routes = [
     {
@@ -68,6 +70,14 @@ const routes = [
     {
         path: '/post-create',
         component: CreatePost
+    },
+    {
+        path: '/member-add',
+        component: AddMember
+    },
+    {
+        path: '/team/:id/leaderboard',
+        component: Leaderboard
     }
 ]
 
