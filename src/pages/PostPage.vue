@@ -1,47 +1,16 @@
 <template>
-  <div>
-    <h1>Страница с постами</h1>
-    <my-input
-        v-model="searchQuery"
-        placeholder="Поиск..."
-    />
-    <div class="app__btns">
-      <my-button
-          @click="showDialog"
-      >
-        Создать пост
-      </my-button>
-      <my-select
-          v-model="selectedSort"
-          :options="sortOptions"
-      />
+  <div class="posts">
+    <h4>Командный проект {{ $store.state.teamName }}</h4>
+    <div class="d-flex flex-row align-items-center mb-4">
+      <my-input v-model="searchQuery" placeholder="Поиск..."/>
+      <my-button @click="$router.push('/post-create')">Создать пост</my-button>
     </div>
-    <my-dialog v-model:show="dialogVisible">
-      <post-form
-          @create="createPost"
-      />
-    </my-dialog>
     <post-list
         :posts="sortedAndSearchedPosts"
-        @remove="removePost"
         v-if="!isPostsLoading"
+        @commentAdded="handleCommentAdded"
     />
     <div v-else>Идет загрузка...</div>
-    <div v-intersection="loadMorePosts" class="observer"></div>
-
-    <!--    <div class="page_wrapper">-->
-    <!--      <div-->
-    <!--        v-for="pageNumber in totalPages"-->
-    <!--        :key="pageNumber"-->
-    <!--        class="page"-->
-    <!--        :class="{-->
-    <!--          'current-page' : page === pageNumber-->
-    <!--        }"-->
-    <!--        @click="changePage(pageNumber)"-->
-    <!--      >-->
-    <!--        {{ pageNumber }}-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </template>
 
@@ -53,6 +22,7 @@ import axios from 'axios';
 import MyButton from "@/components/UI/MyButton.vue";
 import MySelect from "@/components/UI/MySelect.vue";
 import MyInput from "@/components/UI/MyInput.vue";
+import {getPostsByGroupId, postPostFeedback} from "@/api/api.js";
 
 export default {
   components: {
@@ -76,59 +46,26 @@ export default {
       sortOptions: [
         {value: 'title', name: 'По названию'},
         {value: 'body', name: 'По содержимому'},
-      ]
+      ],
+      comment: {
+        id: "",
+        text: "",
+        userId: "",
+        createdAt: "",
+        postId: ""
+      }
     }
   },
   methods: {
-    createPost(post) {
-      this.posts.push(post)
-      this.dialogVisible = false
-    },
-    removePost(post) {
-      this.posts = this.posts.filter(p => p.id !== post.id)
-    },
-    showDialog() {
-      this.dialogVisible = true
-    },
-    async fetchComments(post_id) {
-      try {
-        const res = (await axios.get('https://jsonplaceholder.typicode.com/comments')).data.filter(comment => comment.postId === post_id)
-      } catch (e) {
-        alert('Ошибка')
-      }
-    },
     async fetchPosts() {
-      try {
-        this.isPostsLoading = true;
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-          params: {
-            _page: this.page,
-            _limit: this.limit
-          }
-        });
-        this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-        this.posts = response.data;
-      } catch (e) {
-        alert('Ошибка')
-      } finally {
-        this.isPostsLoading = false;
-      }
+      const response = await getPostsByGroupId(this.$store.state.teamId);
+      this.totalPages = Math.ceil(response.length / this.limit)
+      this.posts = response;
     },
-    async loadMorePosts() {
-      try {
-        this.page += 1;
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-          params: {
-            _page: this.page,
-            _limit: this.limit
-          }
-        });
-        this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit)
-        this.posts = [...this.posts, ...response.data];
-      } catch (e) {
-        alert('Ошибка')
-      }
-    }
+    handleCommentAdded(comment) {
+      const res = postPostFeedback(comment)
+      this.$router.push('/post/' + comment.postId)
+    },
   },
   mounted() {
     this.fetchPosts();
@@ -139,21 +76,18 @@ export default {
           post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
     },
     sortedAndSearchedPosts() {
-      return this.sortedPosts.filter(post => post.title.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase()))
+      return this.sortedPosts.filter(post => post.text.toLocaleLowerCase().includes(this.searchQuery.toLocaleLowerCase()))
     }
-  },
-  watch: {
-    // page() {
-    //   this.fetchPosts()
-    // }
   }
 }
 </script>
 
 <style>
-.app__btns {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+
+.posts {
+  background-image: url("/src/images/background.png");
+  background-size: cover;
+  min-height: 700px;
 }
+
 </style>

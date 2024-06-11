@@ -1,16 +1,18 @@
 <template>
   <div class="team">
-    <div class="card" style="width: 15rem;">
-      <img src="/img.jpg" class="card-img-top" alt="..." style="width: 15rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{ team.id }}</h5>
-        <p class="card-text">{{team.title}}</p>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-6">
+          <img src="/src/images/img.jpg" alt="..." style="width: 160px; border-radius: 15px">
+        </div>
+        <div class="col-6">
+          <div class="card-body" style="width: 100%; margin-left: 20px">
+            <h5 class="card-title mb-3" @click="openTeam" style="cursor: pointer; ">{{ team.name }}</h5>
+            <p class="card-text">{{team.description }}</p>
+          </div>
+        </div>
       </div>
     </div>
-<!--    <div>-->
-<!--      <div><strong>{{ team.id }}</strong></div>-->
-<!--      <div>{{team.title}}</div>-->
-<!--    </div>-->
   </div>
 
 </template>
@@ -21,6 +23,12 @@ export default {
     team: {
       type: Object,
       required: true,
+    }
+  },
+  methods: {
+    openTeam() {
+      this.$store.commit('setTeam', this.team);
+      this.$router.push('/team/' + this.team.id + '/feed');
     }
   }
 }
@@ -39,6 +47,16 @@ export default {
 
 .team {
   // position: absolute;
-  z-index: -1;
+  z-index: 0;
+}
+
+.card {
+  width: 400px;
+  height: 200px;
+  border-radius: 15px;
+}
+
+.card-body {
+  padding: 0;
 }
 </style>

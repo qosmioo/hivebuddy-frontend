@@ -1,15 +1,14 @@
 <template>
   <div v-if="posts.length > 0" class="post-list">
-    <h3>Список постов</h3>
     <post-item
       v-for="post in posts"
       :post="post"
       :key="post.id"
-      @remove="$emit('remove', post)"
+      @commentAdded="$emit('commentAdded', $event)"
     />
   </div>
-  <h2 v-else style="color:red" class="post-list">
-    Список постов пуст
+  <h2 v-else style="color:green" class="post-list">
+    Постов пока нет, будьте первым!
   </h2>
 </template>
 
@@ -29,6 +28,7 @@ export default {
 
 <style>
 .post-list{
-  margin: 15px;
+  margin-bottom: 15px;
+  margin-left: 30px;
 }
 </style>
